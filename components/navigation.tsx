@@ -79,9 +79,9 @@ export function Navigation() {
                   e.preventDefault()
                   handleNavClick(item.href)
                 }}
-                className={`text-sm font-medium transition-colors hover:text-[#e84b8a] ${
+                className={`text-sm font-medium transition-colors hover:text-primary ${
                   activeSection === item.href.slice(1)
-                    ? 'text-[#e84b8a]'
+                    ? 'text-primary'
                     : 'text-muted-foreground'
                 }`}
               >
@@ -112,9 +112,9 @@ export function Navigation() {
                     e.preventDefault()
                     handleNavClick(item.href)
                   }}
-                  className={`text-sm font-medium transition-colors hover:text-[#e84b8a] ${
+                  className={`text-sm font-medium transition-colors hover:text-primary ${
                     activeSection === item.href.slice(1)
-                      ? 'text-[#e84b8a]'
+                      ? 'text-primary'
                       : 'text-muted-foreground'
                   }`}
                 >
