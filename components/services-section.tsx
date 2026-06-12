@@ -32,7 +32,7 @@ export function ServicesSection() {
     <section id="services" className="py-24 px-6">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="font-display text-4xl sm:text-5xl text-[#e84b8a] mb-4 drop-shadow-sm">
+          <h2 className="font-display text-4xl sm:text-5xl text-primary mb-4 drop-shadow-sm">
             What We Do
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -49,8 +49,8 @@ export function ServicesSection() {
               <div className="absolute top-6 right-6 text-6xl font-bold text-muted/30 font-display">
                 {String(index + 1).padStart(2, '0')}
               </div>
-              <div className="w-12 h-12 rounded-xl bg-accent flex items-center justify-center mb-6 group-hover:bg-[#e84b8a]/20 transition-colors">
-                <service.icon className="w-6 h-6 text-primary group-hover:text-[#e84b8a] transition-colors" />
+              <div className="w-12 h-12 rounded-xl bg-accent flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
+                <service.icon className="w-6 h-6 text-primary group-hover:text-primary transition-colors" />
               </div>
               <h3 className="text-xl font-semibold mb-3 text-card-foreground">
                 {service.title}

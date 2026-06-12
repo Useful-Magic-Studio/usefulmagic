@@ -30,13 +30,13 @@ export function HeroSection() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <a
             href="#contact"
-            className="px-8 py-4 bg-[#e84b8a] text-white rounded-full font-medium hover:bg-[#d43d7a] transition-colors"
+            className="px-8 py-4 bg-primary text-primary-foreground rounded-full font-medium hover:bg-primary/90 transition-colors"
           >
             Work With Us
           </a>
           <a
             href="#about"
-            className="px-8 py-4 border border-[#e84b8a] text-foreground rounded-full font-medium hover:bg-[#e84b8a]/10 transition-colors"
+            className="px-8 py-4 border border-primary text-foreground rounded-full font-medium hover:bg-primary/10 transition-colors"
           >
             Learn More
           </a>

@@ -20,7 +20,7 @@ export function TeamSection() {
     <section id="team" className="py-24 px-6 bg-secondary/30">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="font-display text-4xl sm:text-5xl text-[#e84b8a] mb-4 drop-shadow-sm">
+          <h2 className="font-display text-4xl sm:text-5xl text-primary mb-4 drop-shadow-sm">
             Meet the Studio
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -35,8 +35,8 @@ export function TeamSection() {
               className="bg-card rounded-2xl p-8 border border-border hover:border-primary/50 transition-all hover:shadow-lg"
             >
               <div className="flex items-start gap-4 mb-6">
-                <div className="w-16 h-16 rounded-full bg-[#e84b8a]/20 flex items-center justify-center flex-shrink-0">
-                  <member.icon className="w-8 h-8 text-[#e84b8a]" />
+                <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                  <member.icon className="w-8 h-8 text-primary" />
                 </div>
                 <div>
                   <h3 className="text-2xl font-semibold text-card-foreground">
