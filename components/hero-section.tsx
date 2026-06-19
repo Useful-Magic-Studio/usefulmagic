@@ -9,7 +9,7 @@ export function HeroSection() {
       <div className="max-w-4xl mx-auto text-center">
         <div className="mb-8">
           <Image
-            src="/images/logo.png"
+            src="/images/logo.png?v=20260615"
             alt="Useful Magic Studio"
             width={600}
             height={400}

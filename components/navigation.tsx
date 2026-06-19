@@ -61,7 +61,7 @@ export function Navigation() {
             className="flex items-center gap-2 group"
           >
             <Image
-              src="/images/logo.png"
+              src="/images/logo.png?v=20260615"
               alt="Useful Magic Studio"
               width={140}
               height={50}

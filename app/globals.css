@@ -53,15 +53,16 @@
 
 :root {
   /* Useful Magic Studio palette: cream, slate green, purple, gold */
-  --background: #fffdd0;
+  --background: #E9E9E6;
+;
   --foreground: #2f4f4f;
-  --card: #fffef0;
+  --card: #E9E9E6;
   --card-foreground: #2f4f4f;
-  --popover: #fffef0;
+  --popover: #E9E9E6;
   --popover-foreground: #2f4f4f;
   --primary: #6f42c1;
-  --primary-foreground: #fffdd0;
-  --secondary: #e8e6c0;
+  --primary-foreground: #E9E9E6;
+  --secondary: ##F1AB37;
   --secondary-foreground: #2f4f4f;
   --muted: #e8e6c0;
   --muted-foreground: #5c6b6b;
@@ -78,11 +79,11 @@
   --chart-5: #4a6a6a;
   --radius: 0.625rem;
   --magic-yellow: #ffd700;
-  --magic-cream: #fffdd0;
-  --sidebar: #fffef0;
+  --magic-cream: #E9E9E6;
+  --sidebar: #E9E9E6;
   --sidebar-foreground: #2f4f4f;
   --sidebar-primary: #6f42c1;
-  --sidebar-primary-foreground: #fffdd0;
+  --sidebar-primary-foreground: #E9E9E6;
   --sidebar-accent: #ffd700;
   --sidebar-accent-foreground: #2f4f4f;
   --sidebar-border: #d9d6a8;
@@ -91,15 +92,15 @@
 
 .dark {
   --background: #1f2d2d;
-  --foreground: #fffdd0;
+  --foreground: #ffd700;
   --card: #2a3a3a;
-  --card-foreground: #fffdd0;
+  --card-foreground: #E9E9E6;
   --popover: #2a3a3a;
-  --popover-foreground: #fffdd0;
+  --popover-foreground: #E9E9E6;
   --primary: #9b6fd4;
   --primary-foreground: #1f2d2d;
   --secondary: #36494a;
-  --secondary-foreground: #fffdd0;
+  --secondary-foreground: #E9E9E6;
   --muted: #36494a;
   --muted-foreground: #b8c4b8;
   --accent: #ffd700;
@@ -109,9 +110,9 @@
   --input: #3f5454;
   --ring: #9b6fd4;
   --magic-yellow: #ffd700;
-  --magic-cream: #fffdd0;
+  --magic-cream: #E9E9E6;
   --sidebar: #2a3a3a;
-  --sidebar-foreground: #fffdd0;
+  --sidebar-foreground: #E9E9E6;
   --sidebar-primary: #9b6fd4;
   --sidebar-primary-foreground: #1f2d2d;
   --sidebar-accent: #ffd700;

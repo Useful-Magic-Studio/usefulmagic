@@ -8,7 +8,7 @@ export function Footer() {
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <Image
-            src="/images/logo.png"
+            src="/images/logo.png?v=20260615"
             alt="Useful Magic Studio"
             width={120}
             height={40}
