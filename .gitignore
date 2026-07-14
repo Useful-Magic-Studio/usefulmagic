@@ -14,4 +14,6 @@ node_modules
 .next/
 .DS_Store
 .vercel
-package-lock.json
+
+# Sentry Config File
+.env.sentry-build-plugin
