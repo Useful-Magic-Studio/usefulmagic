@@ -13,7 +13,7 @@ export function Footer() {
         {/* Logo */}
         <div className="shrink-0">
           <Image
-            src="/images/logo.png"
+            src="/images/logo.png?v=20260615"
             alt="Useful Magic Studio"
             width={120}
             height={120}
