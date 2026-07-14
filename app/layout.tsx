@@ -1,6 +1,6 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata } from 'next'
-import { Geist, Geist_Mono, Righteous } from 'next/font/google'
+import { Geist, Geist_Mono, Nunito_Sans, ABeeZee, League_Spartan } from 'next/font/google'
 import './globals.css'
 
 const geistSans = Geist({ variable: '--font-geist-sans', subsets: ['latin'] })
@@ -8,10 +8,20 @@ const geistMono = Geist_Mono({
   variable: '--font-geist-mono',
   subsets: ['latin'],
 })
-const righteous = Righteous({
-  weight: '400',
-  variable: '--font-righteous',
+const nunitoSans = Nunito_Sans({
+  variable: '--font-nunito-sans',
   subsets: ['latin'],
+  weight: ['400', '600', '700', '800'],
+})
+const abeezee = ABeeZee({
+  variable: '--font-abeezee',
+  subsets: ['latin'],
+  weight: ['400'],
+})
+const leagueSpartan = League_Spartan({
+  variable: '--font-league-spartan',
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
 })
 
 export const metadata: Metadata = {
@@ -28,9 +38,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${righteous.variable} bg-background`}
+      className={`${geistSans.variable} ${geistMono.variable} ${nunitoSans.variable} ${abeezee.variable} ${leagueSpartan.variable} bg-background`}
     >
-      <body className="font-sans antialiased">{children}</body>
+      <body className="font-sans antialiased mx-auto w-full max-w-(--container-body)">
+        {children}
+      </body>
     </html>
   )
 }

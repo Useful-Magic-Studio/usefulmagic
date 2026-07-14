@@ -1,55 +1,69 @@
-import { Settings, Palette } from 'lucide-react'
-
 const team = [
   {
-    name: 'Sarah Peony',
-    role: 'Systems Analyst & Project Engineer',
-    icon: Settings,
+    name: 'Sarah',
+    role: 'Lead Engineer',
     bio: 'Sarah brings deep technical expertise in system analysis and architecture. She dissects complex workflows to find elegant, scalable solutions that just work.',
   },
   {
-    name: 'Fey Smires',
-    role: 'UX Researcher & Designer',
-    icon: Palette,
+    name: 'Fey',
+    role: 'Lead UX Researcher',
     bio: 'Fey bridges the gap between business needs and user experience. With an eye for design and a mind for strategy, she ensures every solution is both beautiful and practical.',
   },
 ]
 
+function TeamMemberCard({
+  name,
+  role,
+  bio,
+}: {
+  name: string
+  role: string
+  bio: string
+}) {
+  return (
+    <div className="flex flex-col items-center gap-4 max-w-[270px]">
+      <h3 className="font-(family-name:--font-nunito-sans) font-bold text-[40px] leading-[50px] text-[#2f4f4f] text-center w-full">
+        {name}
+      </h3>
+      <p className="font-(family-name:--font-nunito-sans) font-bold text-[24px] leading-[50px] text-[#2f4f4f] text-center">
+        {role}
+      </p>
+      {/* Avatar circle */}
+      <div className="w-[200px] h-[200px] rounded-full bg-[#d4c4e3] border-2 border-[#6f42c1] flex items-center justify-center overflow-hidden">
+        <span className="font-(family-name:--font-nunito-sans) font-bold text-[48px] text-[#6f42c1]">
+          {name[0]}
+        </span>
+      </div>
+      <p className="font-(family-name:--font-abeezee) text-[18px] leading-relaxed text-[#2f4f4f] text-center mt-2">
+        {bio}
+      </p>
+    </div>
+  )
+}
+
 export function TeamSection() {
   return (
-    <section id="team" className="py-24 px-6 bg-secondary/30">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="font-display text-4xl sm:text-5xl text-[#e84b8a] mb-4 drop-shadow-sm">
-            Meet the Studio
+    <section id="team" className="py-24 px-6 bg-[#e9e9e6]">
+      <div className="max-w-7xl mx-auto">
+        {/* Section header */}
+        <div className="flex items-center justify-center gap-4 mb-16">
+          <div className="w-[100px] h-[100px] rounded-[18px] bg-[#f1ab37] border border-[#2f4f4f] shrink-0" />
+          <h2 className="font-(family-name:--font-nunito-sans) font-bold text-[48px] leading-[90px] text-[#6f42c1]">
+            Meet Our Team
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            A small team with big ideas and the skills to make them real
-          </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          {team.map((member) => (
-            <div
-              key={member.name}
-              className="bg-card rounded-2xl p-8 border border-border hover:border-primary/50 transition-all hover:shadow-lg"
-            >
-              <div className="flex items-start gap-4 mb-6">
-                <div className="w-16 h-16 rounded-full bg-[#e84b8a]/20 flex items-center justify-center flex-shrink-0">
-                  <member.icon className="w-8 h-8 text-[#e84b8a]" />
-                </div>
-                <div>
-                  <h3 className="text-2xl font-semibold text-card-foreground">
-                    {member.name}
-                  </h3>
-                  <p className="text-primary font-medium">{member.role}</p>
-                </div>
-              </div>
-              <p className="text-muted-foreground leading-relaxed">
-                {member.bio}
-              </p>
-            </div>
-          ))}
+        {/* Divider */}
+        <div className="border-t-[3px] border-[#6f42c1] mb-16 w-full" />
+
+        {/* Team members — staggered */}
+        <div className="flex flex-col md:flex-row items-start justify-around gap-16">
+          <div className="md:mt-0">
+            <TeamMemberCard {...team[0]} />
+          </div>
+          <div className="md:mt-24">
+            <TeamMemberCard {...team[1]} />
+          </div>
         </div>
       </div>
     </section>
