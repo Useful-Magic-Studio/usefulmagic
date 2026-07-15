@@ -1,3 +1,7 @@
+'use client'
+
+import posthog from 'posthog-js'
+
 export function ContactSection() {
   return (
     <section id="contact" className="bg-[#e9e9e6]">
@@ -14,6 +18,7 @@ export function ContactSection() {
           </p>
           <a
             href="mailto:sarah@usefulmagicstudio.com"
+            onClick={() => posthog.capture('contact_email_clicked', { cta: 'get_in_touch', location: 'contact_top' })}
             className="inline-block bg-[#f1ab37] border-[3px] border-[#6f42c1] text-[#2f4f4f] font-(family-name:--font-abeezee) text-[24px] px-10 py-3 rounded-full shadow-[4px_4px_2px_rgba(0,0,0,0.25)] hover:brightness-95 transition-all"
           >
             Get in Touch
@@ -71,6 +76,7 @@ export function ContactSection() {
             <a
               href="mailto:sarah@usefulmagicstudio.com"
               data-node-id="22:162"
+              onClick={() => posthog.capture('contact_email_clicked', { cta: 'contact_us', location: 'contact_bottom' })}
               className="inline-flex items-center justify-center rounded-[50px] border-[3px] border-solid border-[#6f42c1] bg-[#f1ab37] pb-[4px] pl-[30px] pr-[29px] pt-[5px] font-(family-name:--font-abeezee) text-[24px] whitespace-nowrap text-[#2f4f4f] shadow-[4px_4px_2px_rgba(0,0,0,0.25)] transition-all hover:brightness-95"
             >
               Contact Us
