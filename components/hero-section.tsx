@@ -24,44 +24,6 @@ export function HeroSection() {
           >
             Boutique UX and Engineering Consultancy
           </h1>
-    <section
-      id="home"
-      className="min-h-screen flex flex-col items-center justify-center px-6 pt-20"
-    >
-      <div className="max-w-4xl mx-auto text-center">
-        <div className="mb-8">
-          <Image
-            src="/images/logo.png?v=20260615"
-            alt="Useful Magic Studio"
-            width={600}
-            height={400}
-            className="mx-auto w-full max-w-lg md:max-w-xl lg:max-w-2xl h-auto"
-            priority
-          />
-        </div>
-
-        <p className="text-xl sm:text-2xl md:text-3xl text-foreground/90 mb-4 font-light">
-          Helping teams use magic wisely
-        </p>
-
-        <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed">
-          A boutique agency built on analyzing systems and making them
-          human-friendly and AI upgraded
-        </p>
-
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a
-            href="#contact"
-            className="px-8 py-4 bg-primary text-primary-foreground rounded-full font-medium hover:bg-primary/90 transition-colors"
-          >
-            Work With Us
-          </a>
-          <a
-            href="#about"
-            className="px-8 py-4 border border-primary text-foreground rounded-full font-medium hover:bg-primary/10 transition-colors"
-          >
-            Learn More
-          </a>
         </div>
 
         <div className="mt-[41px]">
