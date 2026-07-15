@@ -1,0 +1,32 @@
+---
+description: Write PR descriptions as copy-pasteable GitHub markdown
+alwaysApply: true
+---
+
+# PR Descriptions
+
+When writing a pull request description (draft or final), always output it as **markdown inside a fenced code block** so it can be copied and pasted directly into GitHub.
+
+## Format
+
+- Wrap the full description in a ` ```markdown ` code fence
+- Use GitHub-flavored markdown: `##` headings, bullet lists, checkboxes
+- Include at least **Summary** and **Test plan** sections
+- Prefer concise bullets over long prose
+
+## Example shape
+
+````markdown
+```markdown
+## Summary
+- What changed and why
+
+## Test plan
+- [ ] How to verify
+```
+````
+
+## Do not
+
+- Render the description as normal chat markdown only (harder to copy cleanly)
+- Add surrounding commentary inside the code fence—keep the fence contents PR-ready
