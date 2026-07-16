@@ -11,9 +11,10 @@ export function HeroSection() {
             <Image
               src="/images/logo.png"
               alt="Useful Magic Studio"
-              width={337}
-              height={341}
-              className="h-auto w-[337px]"
+              width={564}
+              height={572}
+              className="w-[337px]"
+              style={{ height: 'auto' }}
               priority
             />
           </div>

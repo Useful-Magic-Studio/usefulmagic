@@ -5,11 +5,26 @@
 import posthog from "posthog-js";
 import * as Sentry from "@sentry/nextjs";
 
+/**
+ * Privacy-friendly PostHog (cookieless).
+ *
+ * Project settings required in the PostHog UI (cannot be set from client code):
+ * 1. Project Settings → Web analytics → enable "Cookieless server hash mode"
+ * 2. Project Settings → IP data capture → enable "Discard client IP data"
+ *
+ * See: https://posthog.com/tutorials/cookieless-tracking
+ */
 posthog.init(process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN!, {
   api_host: "/ingest",
   ui_host: "https://us.posthog.com",
-  defaults: "2026-01-30",
-  capture_exceptions: true,
+  defaults: "2026-05-30",
+  cookieless_mode: "always",
+  autocapture: false,
+  capture_dead_clicks: false,
+  capture_exceptions: false,
+  disable_session_recording: true,
+  disable_surveys: true,
+  person_profiles: "identified_only",
   debug: process.env.NODE_ENV === "development",
 });
 
