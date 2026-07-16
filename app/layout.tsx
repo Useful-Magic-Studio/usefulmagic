@@ -1,6 +1,6 @@
-import { Analytics } from '@vercel/analytics/next'
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono, Nunito_Sans, ABeeZee, League_Spartan } from 'next/font/google'
+import { ConsentProvider } from '@/components/privacy/consent-provider'
 import './globals.css'
 
 const geistSans = Geist({ variable: '--font-geist-sans', subsets: ['latin'] })
@@ -41,7 +41,7 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} ${nunitoSans.variable} ${abeezee.variable} ${leagueSpartan.variable} bg-background`}
     >
       <body className="font-sans antialiased mx-auto w-full max-w-(--container-body)">
-        {children}
+        <ConsentProvider>{children}</ConsentProvider>
       </body>
     </html>
   )

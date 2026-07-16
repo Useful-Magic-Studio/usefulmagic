@@ -8,8 +8,11 @@ import {
   trackNewsletterSignup,
   trackPrimaryCta,
 } from '@/lib/analytics'
+import { useConsent } from '@/components/privacy/consent-context'
 
 export function Footer() {
+  const { openPreferences } = useConsent()
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
@@ -77,13 +80,20 @@ export function Footer() {
           </span>
         </button>
       </div>
-      <div className="max-w-7xl mx-auto mt-6 flex justify-center">
+      <div className="max-w-7xl mx-auto mt-6 flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
         <Link
           href="/privacy"
           className="font-(family-name:--font-abeezee) text-[16px] text-[#2f4f4f] underline underline-offset-2 hover:text-[#6f42c1] transition-colors"
         >
           Privacy Policy
         </Link>
+        <button
+          type="button"
+          onClick={openPreferences}
+          className="font-(family-name:--font-abeezee) text-[16px] text-[#2f4f4f] underline underline-offset-2 hover:text-[#6f42c1] transition-colors"
+        >
+          Privacy Preferences
+        </button>
       </div>
       <script async data-uid="7e1bfa35a1" src="https://usefulmagicstudio.kit.com/7e1bfa35a1/index.js"></script>
     </footer>
