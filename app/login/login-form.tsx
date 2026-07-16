@@ -8,7 +8,7 @@ export function LoginForm() {
   const [error, formAction, isPending] = useActionState(login, null)
 
   return (
-    <form action={formAction} className="flex flex-col gap-4">
+    <form action={formAction} className="flex flex-col gap-4" data-sentry-block>
       <div className="relative">
         <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
         <input

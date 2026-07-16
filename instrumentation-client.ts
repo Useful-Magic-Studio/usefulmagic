@@ -1,58 +1,64 @@
-// This file configures the initialization of Sentry on the client.
-// The added config here will be used whenever a users loads a page in their browser.
+// Client-side Sentry + PostHog initialization.
 // https://docs.sentry.io/platforms/javascript/guides/nextjs/
+// https://posthog.com/tutorials/cookieless-tracking
 
-import posthog from "posthog-js";
-import * as Sentry from "@sentry/nextjs";
+import posthog from 'posthog-js'
+import * as Sentry from '@sentry/nextjs'
+import { scrubSentryEvent } from '@/lib/sentry-scrub'
 
 /**
- * Privacy-friendly PostHog (cookieless).
- *
- * Project settings required in the PostHog UI (cannot be set from client code):
- * 1. Project Settings → Web analytics → enable "Cookieless server hash mode"
- * 2. Project Settings → IP data capture → enable "Discard client IP data"
- *
- * See: https://posthog.com/tutorials/cookieless-tracking
+ * PostHog stays paused until the visitor accepts or rejects optional tracking
+ * (`cookieless_mode: "on_reject"`). Project settings still required:
+ * 1. Cookieless server hash mode
+ * 2. Discard client IP data (where available)
  */
 posthog.init(process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN!, {
-  api_host: "/ingest",
-  ui_host: "https://us.posthog.com",
-  defaults: "2026-05-30",
-  cookieless_mode: "always",
+  api_host: '/ingest',
+  ui_host: 'https://us.posthog.com',
+  defaults: '2026-05-30',
+  cookieless_mode: 'on_reject',
   autocapture: false,
   capture_dead_clicks: false,
   capture_exceptions: false,
+  // PostHog session replay stays off — Sentry owns replay after consent.
   disable_session_recording: true,
   disable_surveys: true,
-  person_profiles: "identified_only",
-  debug: process.env.NODE_ENV === "development",
-});
+  person_profiles: 'identified_only',
+  debug: process.env.NODE_ENV === 'development',
+})
 
 Sentry.init({
-  dsn: "https://6874c84087539a3bc35b4b30204a8bdb@o4511734027517952.ingest.us.sentry.io/4511734034923520",
-
-  // Add optional integrations for additional features
-  integrations: [Sentry.replayIntegration()],
-
-  // Define how likely traces are sampled. Adjust this value in production, or use tracesSampler for greater control.
+  dsn: 'https://6874c84087539a3bc35b4b30204a8bdb@o4511734027517952.ingest.us.sentry.io/4511734034923520',
+  sendDefaultPii: false,
+  integrations: [
+    Sentry.replayIntegration({
+      maskAllText: true,
+      maskAllInputs: true,
+      blockAllMedia: true,
+      // Exclude sensitive surfaces even if unmasked elsewhere later.
+      block: [
+        'form',
+        'input',
+        'textarea',
+        'select',
+        '[type="password"]',
+        '#contact',
+        '[data-sentry-block]',
+      ],
+      networkDetailAllowUrls: [],
+      networkCaptureBodies: false,
+    }),
+  ],
   tracesSampleRate: 1,
-  // Enable logs to be sent to Sentry
   enableLogs: true,
-
-  // Define how likely Replay events are sampled.
-  // This sets the sample rate to be 10%. You may want this to be 100% while
-  // in development and sample at a lower rate in production
-  replaysSessionSampleRate: 0.1,
-
-  // Define how likely Replay events are sampled when an error occurs.
-  replaysOnErrorSampleRate: 1.0,
-
+  // Replay stays off until optional consent is granted.
+  replaysSessionSampleRate: 0,
+  replaysOnErrorSampleRate: 0,
+  beforeSend: scrubSentryEvent,
   dataCollection: {
-    // To disable sending user data and HTTP bodies, uncomment the lines below. For more info visit:
-    // https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/options/#dataCollection
-    // userInfo: false,
-    // httpBodies: [],
+    userInfo: false,
+    httpBodies: [],
   },
-});
+})
 
-export const onRouterTransitionStart = Sentry.captureRouterTransitionStart;
+export const onRouterTransitionStart = Sentry.captureRouterTransitionStart

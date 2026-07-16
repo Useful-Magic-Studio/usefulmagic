@@ -4,7 +4,7 @@ import { trackContactConversion, trackPrimaryCta } from '@/lib/analytics'
 
 export function ContactSection() {
   return (
-    <section id="contact" className="bg-[#e9e9e6]">
+    <section id="contact" className="bg-[#e9e9e6]" data-sentry-block>
       {/* Ready to work? */}
       <div className="py-24 px-6 text-center">
         <div className="max-w-4xl mx-auto">

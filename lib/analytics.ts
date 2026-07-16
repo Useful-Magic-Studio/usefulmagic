@@ -3,6 +3,7 @@ import posthog from 'posthog-js'
 /**
  * Anonymous marketing analytics helpers.
  * Never pass names, emails, form field values, or other personal data.
+ * Events respect PostHog consent (`cookieless_mode: "on_reject"`).
  */
 export type CtaName =
   | 'work_with_us'
