@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { Menu, X } from 'lucide-react'
 import Image from 'next/image'
-import posthog from 'posthog-js'
+import { trackPrimaryCta } from '@/lib/analytics'
 
 const navItems = [
   { label: 'Home', href: '#home' },
@@ -40,9 +40,8 @@ export function Navigation() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const handleNavClick = (href: string, label?: string) => {
+  const handleNavClick = (href: string) => {
     setIsOpen(false)
-    posthog.capture('nav_item_clicked', { section: href.slice(1), label: label ?? href.slice(1) })
     const element = document.getElementById(href.slice(1))
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' })
@@ -57,7 +56,7 @@ export function Navigation() {
             href="#home"
             onClick={(e) => {
               e.preventDefault()
-              handleNavClick('#home', 'Home')
+              handleNavClick('#home')
             }}
             className="flex items-center"
           >
@@ -78,7 +77,7 @@ export function Navigation() {
                 href={item.href}
                 onClick={(e) => {
                   e.preventDefault()
-                  handleNavClick(item.href, item.label)
+                  handleNavClick(item.href)
                 }}
                 className={`font-(family-name:--font-league-spartan) text-[20px] font-normal transition-colors hover:text-[#6f42c1] ${
                   activeSection === item.href.slice(1)
@@ -93,8 +92,8 @@ export function Navigation() {
               href="#contact"
               onClick={(e) => {
                 e.preventDefault()
-                posthog.capture('contact_us_nav_clicked', { location: 'desktop_nav' })
-                handleNavClick('#contact', 'Contact Us')
+                trackPrimaryCta('contact_us_nav')
+                handleNavClick('#contact')
               }}
               className="bg-[#6f42c1] text-white font-(family-name:--font-abeezee) text-[20px] px-5 py-2 rounded-full border border-[#f2f2da] shadow-[0px_4px_2px_rgba(0,0,0,0.25),4px_4px_2px_rgba(0,0,0,0.25)] hover:bg-[#5a35a0] transition-colors"
             >
@@ -104,11 +103,7 @@ export function Navigation() {
 
           {/* Mobile Menu Button */}
           <button
-            onClick={() => {
-              const next = !isOpen
-              setIsOpen(next)
-              posthog.capture('mobile_menu_toggled', { action: next ? 'open' : 'close' })
-            }}
+            onClick={() => setIsOpen(!isOpen)}
             className="md:hidden p-2 text-[#2f4f4f]"
             aria-label="Toggle menu"
           >
@@ -126,7 +121,7 @@ export function Navigation() {
                   href={item.href}
                   onClick={(e) => {
                     e.preventDefault()
-                    handleNavClick(item.href, item.label)
+                    handleNavClick(item.href)
                   }}
                   className={`font-(family-name:--font-league-spartan) text-[18px] transition-colors hover:text-[#6f42c1] ${
                     activeSection === item.href.slice(1)
@@ -141,8 +136,8 @@ export function Navigation() {
                 href="#contact"
                 onClick={(e) => {
                   e.preventDefault()
-                  posthog.capture('contact_us_nav_clicked', { location: 'mobile_nav' })
-                  handleNavClick('#contact', 'Contact Us')
+                  trackPrimaryCta('contact_us_nav')
+                  handleNavClick('#contact')
                 }}
                 className="bg-[#6f42c1] text-white font-(family-name:--font-abeezee) text-[18px] px-5 py-2 rounded-full text-center hover:bg-[#5a35a0] transition-colors"
               >
