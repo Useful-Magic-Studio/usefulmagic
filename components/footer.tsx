@@ -21,6 +21,11 @@ export function Footer() {
           />
         </div>
 
+          <p className="text-sm text-muted-foreground">
+            © {currentYear} Useful Magic Studio. Crafted with care.
+          </p>
+        </div>
+        <script async data-uid="7e1bfa35a1" src="https://usefulmagicstudio.kit.com/7e1bfa35a1/index.js"></script>
         {/* Contact Us button */}
         <a
           href="mailto:sarah@usefulmagicstudio.com"
