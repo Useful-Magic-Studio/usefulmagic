@@ -1,0 +1,16 @@
+---
+description: Apply accessible interaction and content requirements to React UI changes.
+globs: "**/*.tsx"
+alwaysApply: false
+---
+
+# Accessibility requirements
+
+- Use native semantic elements before ARIA or click handlers on generic elements.
+- Every interactive control must work with a keyboard and show a visible focus state.
+- Give controls an accessible name; associate labels, instructions, and errors with form fields.
+- Preserve logical heading order, meaningful link text, and useful image alternatives.
+- Do not rely on color alone to communicate state or meaning.
+- Respect reduced-motion preferences and avoid unnecessary motion or focus changes.
+- Keep touch targets, text wrapping, zoom, and responsive reflow usable.
+- Report the manual keyboard and automated accessibility verification performed.

@@ -1,0 +1,16 @@
+---
+description: Protect content, SEO, routing, analytics, and privacy contracts in App Router files.
+globs: "app/**/*.tsx"
+alwaysApply: false
+---
+
+# Routes and page composition
+
+- Compose routes from existing components before creating route-local duplicates.
+- Preserve approved message hierarchy, CTA intent, factual claims, and public URLs.
+- Do not ship placeholder marketing or legal copy.
+- Maintain one clear page heading and a logical heading hierarchy.
+- Keep metadata, canonical behavior, social sharing, indexation, and structured data aligned with the route brief.
+- Track only approved events with stable names and consent-appropriate behavior.
+- Changes to `/privacy`, consent disclosures, processors, retention, legal bases, or data rights require Privacy approval.
+- Verify the route at mobile and desktop widths and report any visual assumptions.
