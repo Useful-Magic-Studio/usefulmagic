@@ -5,6 +5,14 @@ import Link from 'next/link'
 import { useConsent } from '@/components/privacy/consent-context'
 
 export function PrivacyPreferencesModal() {
+  const { preferencesOpen } = useConsent()
+
+  if (!preferencesOpen) return null
+
+  return <OpenPrivacyPreferencesModal />
+}
+
+function OpenPrivacyPreferencesModal() {
   const {
     consent,
     consentLabel,
@@ -15,14 +23,15 @@ export function PrivacyPreferencesModal() {
   const titleId = useId()
   const descId = useId()
   const closeRef = useRef<HTMLButtonElement>(null)
-  const [analyticsEnabled, setAnalyticsEnabledLocal] = useState(
-    consent === 'accepted',
-  )
+  const [analyticsDraft, setAnalyticsDraft] = useState(() => ({
+    consent,
+    enabled: consent === 'accepted',
+  }))
   const [saving, setSaving] = useState(false)
-
-  useEffect(() => {
-    setAnalyticsEnabledLocal(consent === 'accepted')
-  }, [consent, preferencesOpen])
+  const analyticsEnabled =
+    analyticsDraft.consent === consent
+      ? analyticsDraft.enabled
+      : consent === 'accepted'
 
   useEffect(() => {
     if (!preferencesOpen) return
@@ -40,8 +49,6 @@ export function PrivacyPreferencesModal() {
       window.removeEventListener('keydown', onKeyDown)
     }
   }, [closePreferences, preferencesOpen])
-
-  if (!preferencesOpen) return null
 
   const onSave = async () => {
     setSaving(true)
@@ -125,7 +132,10 @@ export function PrivacyPreferencesModal() {
                   type="checkbox"
                   checked={analyticsEnabled}
                   onChange={(event) =>
-                    setAnalyticsEnabledLocal(event.target.checked)
+                    setAnalyticsDraft({
+                      consent,
+                      enabled: event.target.checked,
+                    })
                   }
                   className="h-5 w-5 accent-[#6f42c1]"
                 />
