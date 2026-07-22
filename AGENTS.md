@@ -29,6 +29,7 @@ Use npm only.
 npm ci
 npm run dev
 npm run lint
+npm run typecheck
 npm run build
 ```
 
