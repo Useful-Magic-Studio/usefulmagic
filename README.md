@@ -190,9 +190,15 @@ content/service-copy
 
 ## License
 
-All content, branding, and design direction for Useful Magic Studio are proprietary unless otherwise stated.
+The source code in this repository is available under the
+[Useful Magic Source-Available License 1.0](LICENSE). You may study, modify,
+and use the code for your own website, including your own business website.
+You may not resell it or offer substantial copies as templates, starter kits,
+client deliverables, hosted solutions, or similar products or services.
 
-Code licensing can be updated here if the project becomes open source.
+Useful Magic Studio names, logos, trademarks, branding, written content, and
+media are excluded from the license and remain protected. This is a
+source-available license, not an open-source license.
 
 ## Contact
 
