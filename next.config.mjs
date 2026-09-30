@@ -3,9 +3,6 @@ import { withSentryConfig } from '@sentry/nextjs';
 const nextConfig = {
   // Playwright's local webServer uses 127.0.0.1; without this, dev blocks HMR and pages never hydrate.
   allowedDevOrigins: ['127.0.0.1'],
-  typescript: {
-    ignoreBuildErrors: true,
-  },
   images: {
     unoptimized: true,
   },

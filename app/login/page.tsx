@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import { LoginForm } from './login-form'
 
 export const metadata: Metadata = {
@@ -11,9 +12,11 @@ export default function LoginPage() {
     <main className="min-h-screen flex items-center justify-center px-4 py-12 bg-background">
       <div className="w-full max-w-md">
         <div className="flex flex-col items-center text-center mb-8">
-          <img
+          <Image
             src="/images/logo.png"
             alt="Useful Magic Studio"
+            width={564}
+            height={572}
             className="w-64 h-auto mb-6"
           />
           <h1 className="font-display text-2xl text-primary mb-2">

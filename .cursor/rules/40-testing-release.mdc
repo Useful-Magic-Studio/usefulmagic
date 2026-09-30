@@ -1,0 +1,15 @@
+---
+description: Apply when changing build, test, analytics, deployment, or release behavior.
+alwaysApply: false
+---
+
+# Verification and release safety
+
+- Run the fastest relevant deterministic checks before broader browser or visual review.
+- Use only scripts that exist in `package.json`; propose missing checks instead of inventing passing results.
+- Do not disable TypeScript, lint, build, accessibility, privacy, analytics, or performance checks.
+- Never delete or mass-update expected results solely to make a failure disappear.
+- Validate preview behavior before requesting production approval.
+- Production deployment, rollback, environment variables, and branch protection remain human-controlled.
+- Report failed checks and pre-existing failures separately from failures introduced by the change.
+- Include a rollback note when changing routing, analytics, consent, or deployment configuration.

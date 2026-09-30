@@ -1,4 +1,4 @@
-import type { ErrorEvent, EventHint } from '@sentry/nextjs'
+import type { ErrorEvent } from '@sentry/nextjs'
 
 const SENSITIVE_QUERY_KEYS = [
   'email',
@@ -37,10 +37,7 @@ function scrubUrl(url: string | undefined): string | undefined {
  * Privacy-minimized error scrubbing for essential Sentry error monitoring.
  * Removes common PII surfaces before events leave the browser/server.
  */
-export function scrubSentryEvent(
-  event: ErrorEvent,
-  _hint?: EventHint,
-): ErrorEvent | null {
+export function scrubSentryEvent(event: ErrorEvent): ErrorEvent | null {
   if (event.request) {
     event.request.cookies = undefined
     event.request.headers = undefined

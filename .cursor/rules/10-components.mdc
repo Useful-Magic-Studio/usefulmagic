@@ -1,0 +1,15 @@
+---
+description: Preserve the Useful Magic component system when editing React components.
+globs: "components/**/*.tsx"
+alwaysApply: false
+---
+
+# Component implementation
+
+- Reuse `components/ui` primitives and existing section patterns before adding a component.
+- Keep component APIs small, typed, and composable; avoid route-specific behavior in shared UI.
+- Prefer semantic theme variables and existing utilities over arbitrary colors, spacing, or fixed dimensions.
+- Provide the relevant states: default, hover, focus, active, disabled, loading, empty, and error.
+- Confirm long copy, narrow viewports, keyboard use, and reduced motion do not break the component.
+- Keep analytics calls explicit and stable. Never include personal or free-text values in event properties.
+- A shared API or design-token change requires an explicit plan and reviewer approval.

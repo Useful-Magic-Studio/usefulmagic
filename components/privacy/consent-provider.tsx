@@ -1,6 +1,13 @@
 'use client'
 
-import { useCallback, useEffect, useMemo, useState, type ReactNode } from 'react'
+import {
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+  useSyncExternalStore,
+  type ReactNode,
+} from 'react'
 import {
   applyConsent,
   CONSENT_CHANGE_EVENT,
@@ -20,15 +27,31 @@ import { PrivacyPreferencesModal } from '@/components/privacy/privacy-preference
 
 export { useConsent } from '@/components/privacy/consent-context'
 
+const getServerConsent = (): ConsentState => 'pending'
+const getClientHydration = () => true
+const getServerHydration = () => false
+const subscribeToHydration = () => () => undefined
+
+function subscribeToConsent(onStoreChange: () => void) {
+  window.addEventListener(CONSENT_CHANGE_EVENT, onStoreChange)
+  return () => window.removeEventListener(CONSENT_CHANGE_EVENT, onStoreChange)
+}
+
 export function ConsentProvider({ children }: { children: ReactNode }) {
-  const [consent, setConsent] = useState<ConsentState>('pending')
-  const [hydrated, setHydrated] = useState(false)
+  const consent = useSyncExternalStore(
+    subscribeToConsent,
+    readConsent,
+    getServerConsent,
+  )
+  const hydrated = useSyncExternalStore(
+    subscribeToHydration,
+    getClientHydration,
+    getServerHydration,
+  )
   const [preferencesOpen, setPreferencesOpen] = useState(false)
 
   useEffect(() => {
     const existing = readConsent()
-    setConsent(existing)
-    setHydrated(true)
 
     if (existing === 'accepted') {
       void applyConsent('accepted')
@@ -36,19 +59,10 @@ export function ConsentProvider({ children }: { children: ReactNode }) {
       void applyConsent('rejected')
     }
 
-    const onConsentChange = (event: Event) => {
-      const detail = (event as CustomEvent<ConsentChoice>).detail
-      if (detail === 'accepted' || detail === 'rejected') {
-        setConsent(detail)
-      }
-    }
-
     const onOpenPreferences = () => setPreferencesOpen(true)
 
-    window.addEventListener(CONSENT_CHANGE_EVENT, onConsentChange)
     window.addEventListener(OPEN_PREFERENCES_EVENT, onOpenPreferences)
     return () => {
-      window.removeEventListener(CONSENT_CHANGE_EVENT, onConsentChange)
       window.removeEventListener(OPEN_PREFERENCES_EVENT, onOpenPreferences)
     }
   }, [])
@@ -56,7 +70,6 @@ export function ConsentProvider({ children }: { children: ReactNode }) {
   const persistAndApply = useCallback(
     async (choice: ConsentChoice, clearIdentifiers: boolean) => {
       writeConsent(choice)
-      setConsent(choice)
       await applyConsent(choice, { clearIdentifiers })
     },
     [],

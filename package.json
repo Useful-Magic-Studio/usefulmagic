@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
+    "typecheck": "tsc --noEmit --incremental false",
     "test:e2e": "playwright test",
     "test:visual": "chromatic --playwright"
   },
@@ -34,6 +35,8 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "chromatic": "^18.10.1",
+    "eslint": "^9.39.1",
+    "eslint-config-next": "^16.2.10",
     "postcss": "^8.5",
     "tailwindcss": "^4.2.0",
     "typescript": "5.7.3"

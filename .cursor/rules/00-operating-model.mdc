@@ -1,0 +1,15 @@
+---
+description: Apply the repository delivery contract to every implementation task.
+alwaysApply: true
+---
+
+# Operating model
+
+- Read `AGENTS.md` before making changes.
+- Work from an explicit outcome and keep the diff to the smallest coherent change.
+- Inspect adjacent code before choosing a pattern; prefer reuse over parallel implementations.
+- Plan before editing when a change crosses files, concerns, or approval boundaries.
+- Run only documented project commands and report their actual results.
+- Do not add dependencies, change services, weaken checks, deploy, or modify production settings without approval.
+- Stop when required copy, claims, design direction, privacy decisions, or acceptance criteria are missing.
+- Return evidence: changed files, checks, results, risks, and manual review needs.

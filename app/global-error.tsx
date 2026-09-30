@@ -17,7 +17,15 @@ export default function GlobalError({
 
   useEffect(() => {
     const id = Sentry.captureException(error)
-    setEventId(id)
+    let active = true
+
+    queueMicrotask(() => {
+      if (active) setEventId(id)
+    })
+
+    return () => {
+      active = false
+    }
   }, [error])
 
   const supportHref = eventId
