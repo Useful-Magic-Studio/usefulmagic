@@ -2,11 +2,22 @@ import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 import { AUTH_COOKIE, deriveToken } from '@/lib/auth'
 
+/** Production stays gated. Local dev, `vercel dev`, and preview deploys stay open. */
+function isPasswordGateEnabled(password: string | undefined) {
+  if (!password) return false
+
+  // Vercel sets this to "production", "preview", or "development".
+  // Preview builds also have NODE_ENV=production, so that is not enough.
+  const vercelEnv = process.env.VERCEL_ENV
+  if (vercelEnv) return vercelEnv === 'production'
+
+  return process.env.NODE_ENV === 'production'
+}
+
 export async function middleware(request: NextRequest) {
   const password = process.env.SITE_PASSWORD
 
-  // If no password is configured, leave the site open.
-  if (!password) {
+  if (!password || !isPasswordGateEnabled(password)) {
     return NextResponse.next()
   }
 
