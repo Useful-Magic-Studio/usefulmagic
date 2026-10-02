@@ -19,6 +19,20 @@ node_modules
 .DS_Store
 .vercel
 
+# Cursor: share rules and commands, ignore local state.
+# Ignore contents, not the directory, so the exceptions below can match.
+.cursor/*
+!.cursor/rules/
+!.cursor/rules/**
+!.cursor/commands/
+!.cursor/commands/**
+
+# Playwright
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
+
 # Sentry Config File
 .env.sentry-build-plugin
 .env.local

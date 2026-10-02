@@ -143,6 +143,50 @@ To deploy:
 
 Vercel will automatically create preview deployments for branches and production deployments from the main branch, depending on the project settings.
 
+## Visual Testing
+
+Visual tests use Playwright for page assertions and Chromatic for screenshot review. Tests live in `tests/visual` and cover `/`, `/privacy`, `/login`, and the consent banner.
+
+### Running locally
+
+```bash
+npm run test:e2e
+```
+
+Runs Playwright against `next dev` at `http://127.0.0.1:3000`. If `PLAYWRIGHT_TEST_BASE_URL` is set, tests run against that URL instead and no local server is started.
+
+A few things to know:
+
+* The consent banner is dismissed via localStorage before page screenshots. The banner test always opens `/login`.
+* If a page redirects to `/login`, tests sign in with `SITE_PASSWORD` (from the environment or `.env.local`) and reopen the intended page, so the password form does not appear in those screenshots.
+* Local `next dev` and Vercel preview deployments are not password-gated. Production is.
+
+```bash
+npm run test:visual
+```
+
+Runs `chromatic --playwright` and uploads the test archives to Chromatic. This requires `CHROMATIC_PROJECT_TOKEN`, found in the Chromatic project under Manage → Configure. Do not commit the token.
+
+Without the token, `npm run test:e2e` still runs the assertions and writes local archives under `test-results/`.
+
+### Running in CI
+
+`.github/workflows/chromatic.yml` runs when Vercel sends the `vercel.deployment.success` `repository_dispatch` event. It can also be run manually through `workflow_dispatch` with a `base_url` input.
+
+* The workflow file must be on the default branch before Vercel dispatch events will trigger it.
+* Preview deployments run Chromatic with `--exit-zero-on-changes`, so the GitHub job can pass while visual changes still need review in Chromatic.
+* Production deployments run with `--auto-accept-changes main`, so baselines update on the default branch.
+* `chromaui/action` is not used because it does not support Vercel's deployment events.
+
+To set up CI:
+
+1. Add GitHub repository secrets:
+   * `CHROMATIC_PROJECT_TOKEN` (required)
+   * `VERCEL_AUTOMATION_BYPASS_SECRET` (only if Vercel Deployment Protection is on)
+   * `SITE_PASSWORD` (only used for production runs)
+2. Link the Chromatic project to the GitHub repository.
+3. To block pull requests until visual changes are accepted, require the UI Tests check in branch protection.
+
 ## Brand Positioning
 
 Useful Magic Studio helps teams turn messy ideas, outdated workflows, and disconnected tools into clear, functional systems.
