@@ -1,0 +1,80 @@
+# repository_dispatch only triggers this workflow once it exists on the default branch.
+name: Visual tests (Chromatic)
+
+on:
+  repository_dispatch:
+    types: [vercel.deployment.success]
+  workflow_dispatch:
+    inputs:
+      base_url:
+        description: Deployment URL to test
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: chromatic-${{ github.event.client_payload.git.ref || github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+  visual:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      TARGET_URL: ${{ github.event.client_payload.url || inputs.base_url }}
+      TARGET_SHA: ${{ github.event.client_payload.git.sha || github.sha }}
+      TARGET_BRANCH: ${{ github.event.client_payload.git.ref || github.ref_name }}
+      TARGET_ENV: ${{ github.event.client_payload.environment || 'preview' }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ env.TARGET_SHA }}
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+
+      - run: npm ci
+
+      - run: npx playwright install --with-deps chromium
+
+      - name: Resolve base URL
+        run: |
+          url="$TARGET_URL"
+          if [[ "$url" != http* ]]; then
+            url="https://$url"
+          fi
+          echo "PLAYWRIGHT_TEST_BASE_URL=$url" >> "$GITHUB_ENV"
+
+      - name: Run Playwright tests
+        run: npm run test:e2e
+        env:
+          VERCEL_AUTOMATION_BYPASS_SECRET: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}
+          SITE_PASSWORD: ${{ env.TARGET_ENV == 'production' && secrets.SITE_PASSWORD || '' }}
+
+      - name: Publish to Chromatic
+        if: ${{ !cancelled() }}
+        run: |
+          if [[ "$TARGET_ENV" == "production" ]]; then
+            npm run test:visual -- --auto-accept-changes main
+          else
+            npm run test:visual -- --exit-zero-on-changes
+          fi
+        env:
+          CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          CHROMATIC_BRANCH: ${{ env.TARGET_BRANCH }}
+          CHROMATIC_SHA: ${{ env.TARGET_SHA }}
+          CHROMATIC_SLUG: ${{ github.repository }}
+
+      - uses: actions/upload-artifact@v7
+        if: failure()
+        with:
+          name: playwright-results
+          path: |
+            test-results
+            playwright-report
+          retention-days: 7
