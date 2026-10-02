@@ -19,6 +19,8 @@ node_modules
 .DS_Store
 .vercel
 
+# Playwright and Chromatic output
+=======
 # Cursor: share rules and commands, ignore local state.
 # Ignore contents, not the directory, so the exceptions below can match.
 .cursor/*
