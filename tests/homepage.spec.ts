@@ -9,7 +9,7 @@ test('Homepage', async ({ page }) => {
   await expect(
     page.getByRole('heading', {
       level: 1,
-      name: 'Boutique UX and Engineering Consultancy',
+      name: 'Helping Growing Businesses Work Better',
     }),
   ).toBeVisible()
 })

@@ -1,8 +1,13 @@
 'use client'
 
 import { useEffect } from 'react'
-import Image from 'next/image'
 import Link from 'next/link'
+import {
+  ClarityIcon,
+  ConfidenceIcon,
+  GrowthIcon,
+  PeopleIcon,
+} from '@/components/pillar-icons'
 import {
   trackContactConversion,
   trackNewsletterSignup,
@@ -10,14 +15,41 @@ import {
 } from '@/lib/analytics'
 import { useConsent } from '@/components/privacy/consent-context'
 
+const closing = [
+  {
+    title: 'Growth',
+    body: 'With clarity and confidence, your organization can adapt, scale, and grow with purpose.',
+    icon: <GrowthIcon />,
+    titleClassName: 'text-[#59339d]',
+  },
+  {
+    title: 'Confidence',
+    body: 'Clear systems build trust and consistency-giving your team the confidence to work smarter.',
+    icon: <ConfidenceIcon />,
+    titleClassName: 'text-[#2f4f4f]',
+  },
+  {
+    title: 'Clarity',
+    body: 'We create clarity by untangling complexity and designing intuitive systems that make work flow.',
+    icon: <ClarityIcon />,
+    titleClassName: 'text-[#59339d]',
+  },
+  {
+    title: 'People',
+    body: 'We start with people. Understanding your team, their needs, and the work that matters.',
+    icon: <PeopleIcon />,
+    titleClassName: 'text-[#2f4f4f]',
+  },
+]
+
 export function Footer() {
   const { openPreferences } = useConsent()
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' })
   }
 
-  // Kit (ConvertKit) embeds submit via JS; listen for form submit without reading field values.
   useEffect(() => {
     const onSubmit = (event: Event) => {
       const target = event.target
@@ -31,70 +63,86 @@ export function Footer() {
   }, [])
 
   return (
-    <footer className="bg-[#f1ab37] border-t-2 border-[#2f4f4f] px-6 py-8">
-      <div className="max-w-7xl mx-auto flex items-center justify-between gap-6">
-        {/* Logo */}
-        <div className="shrink-0">
-          <Image
-            src="/images/logo.png?v=20260615"
-            alt="Useful Magic Studio"
-            width={120}
-            height={120}
-            className="h-20 w-auto"
-          />
-        </div>
-        {/* Contact Us button */}
-        <a
-          href="mailto:sarah@usefulmagicstudio.com"
-          onClick={() => {
-            trackPrimaryCta('contact_us_footer')
-            trackContactConversion()
-          }}
-          className="bg-[#6f42c1] text-white font-(family-name:--font-abeezee) text-[24px] px-8 py-2.5 rounded-full border border-[#f2f2da] shadow-[0px_4px_2px_rgba(0,0,0,0.25),4px_4px_2px_rgba(0,0,0,0.25)] hover:bg-[#5a35a0] transition-all"
-        >
-          Contact Us
-        </a>
-
-        {/* Back to Top */}
-        <button
-          onClick={scrollToTop}
-          className="flex flex-col items-center gap-2 group"
-          aria-label="Back to top"
-        >
-          <div className="w-[62px] h-[62px] bg-[#f1ab37] border-[3px] border-[#6f42c1] rounded-[15px] flex items-center justify-center group-hover:brightness-95 transition-all">
-            <svg
-              width="30"
-              height="30"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="#6f42c1"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M12 19V5M5 12l7-7 7 7" />
-            </svg>
-          </div>
-          <span className="font-(family-name:--font-abeezee) text-[24px] text-[#6f42c1]">
-            Back to Top
-          </span>
-        </button>
+    <footer className="bg-[#e9e9e6]">
+      <div className="mx-auto w-full max-w-[1224px] px-6 pt-10">
+        <ul className="grid list-none grid-cols-1 gap-10 sm:grid-cols-2 xl:grid-cols-4">
+          {closing.map((item) => (
+            <li key={item.title} className="mx-auto flex max-w-[216px] flex-col items-center text-center">
+              {item.icon}
+              <p className={`mt-2 font-(family-name:--font-nunito-sans) text-[36px] leading-[50px] font-bold ${item.titleClassName}`}>
+                {item.title}
+              </p>
+              <p className="font-(family-name:--font-abeezee) text-[20px] leading-normal text-[#2f4f4f]">
+                {item.body}
+              </p>
+            </li>
+          ))}
+        </ul>
       </div>
-      <div className="max-w-7xl mx-auto mt-6 flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
-        <Link
-          href="/privacy"
-          className="font-(family-name:--font-abeezee) text-[16px] text-[#2f4f4f] underline underline-offset-2 hover:text-[#6f42c1] transition-colors"
-        >
-          Privacy Policy
-        </Link>
+
+      <div className="mt-10 border-2 border-[#2f4f4f] bg-[#f1ab37]">
+        <div className="mx-auto grid max-w-[1440px] grid-cols-2 sm:grid-cols-3 lg:min-h-[178px] lg:grid-cols-[minmax(0,1fr)_175px_175px_175px]">
+          <div className="col-span-2 flex items-center gap-6 px-8 py-4 sm:col-span-1">
+            <img
+              src="/images/home/footer-mark.svg"
+              alt="Useful Magic Studio"
+              width={149}
+              height={156}
+            />
+            <p className="font-(family-name:--font-abeezee) text-[16px] leading-snug text-black lg:text-[18px]">
+              © 2026 Useful Magic Studio. Crafted with care.
+            </p>
+          </div>
+          <Link
+            href="/privacy"
+            className="flex items-center justify-center border-l-2 border-[#2f4f4f] px-3 text-center font-(family-name:--font-league-spartan) text-[22px] leading-[28px] text-[#2f4f4f] shadow-[inset_8px_-8px_4px_0px_rgba(255,255,246,0.25)] focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-[#59339d] lg:text-[25px]"
+          >
+            Privacy Policy
+          </Link>
+          <a
+            href="mailto:sarah@usefulmagicstudio.com"
+            onClick={() => {
+              trackPrimaryCta('contact_us_footer')
+              trackContactConversion()
+            }}
+            className="flex items-center justify-center border-l-2 border-[#2f4f4f] bg-[#59339d] px-3 text-center font-(family-name:--font-league-spartan) text-[22px] leading-[28px] text-[#fffff6] shadow-[inset_8px_-8px_4px_0px_rgba(255,255,246,0.25)] focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-[#fffff6] lg:text-[25px]"
+          >
+            Contact
+            <br />
+            Us
+          </a>
+          <button
+            type="button"
+            onClick={scrollToTop}
+            className="flex items-center justify-center gap-2 border-l-2 border-[#2f4f4f] bg-[#2f4f4f] px-3 text-center font-(family-name:--font-league-spartan) text-[22px] leading-[28px] text-[#fffff6] shadow-[inset_8px_-8px_4px_0px_rgba(255,255,246,0.25)] focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-[#f1ab37] lg:text-[25px]"
+          >
+            <span>
+              Back to
+              <br />
+              Top
+            </span>
+            <img
+              src="/images/home/footer-arrow.svg"
+              alt=""
+              width={50}
+              height={29}
+              className="-rotate-90"
+              aria-hidden
+            />
+          </button>
+        </div>
+      </div>
+
+      <div className="bg-[#f1ab37] px-6 py-4 text-center">
         <button
           type="button"
           onClick={openPreferences}
-          className="font-(family-name:--font-abeezee) text-[16px] text-[#2f4f4f] underline underline-offset-2 hover:text-[#6f42c1] transition-colors"
+          className="font-(family-name:--font-abeezee) text-[16px] text-[#2f4f4f] underline underline-offset-2 hover:text-[#59339d] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#59339d]"
         >
           Privacy Preferences
         </button>
       </div>
+
       <script async data-uid="7e1bfa35a1" src="https://usefulmagicstudio.kit.com/7e1bfa35a1/index.js"></script>
     </footer>
   )
