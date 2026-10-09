@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 type Spark = {
   src: string
   width: number
@@ -38,7 +40,7 @@ function StackedMarks({ marks }: { marks: Spark[] }) {
   return (
     <>
       {marks.map((mark) => (
-        <img
+        <Image
           key={mark.src}
           src={mark.src}
           alt=""
@@ -54,19 +56,19 @@ function StackedMarks({ marks }: { marks: Spark[] }) {
 
 export function PeopleIcon() {
   return (
-    <div className="relative h-[207px] w-[207px] shrink-0" aria-hidden>
-      <img
+    <div className="relative h-51.75 w-51.75 shrink-0" aria-hidden>
+      <Image
         src="/images/home/people/ring.svg"
         alt=""
         width={207.167}
         height={206.998}
       />
-      <img
+      <Image
         src="/images/home/people/fill.svg"
         alt=""
         width={202.167}
         height={201.998}
-        className="absolute left-[2px] top-[2px]"
+        className="absolute left-0.5 top-0.5"
         style={{
           maskImage: 'url(/images/home/people/mask.svg)',
           WebkitMaskImage: 'url(/images/home/people/mask.svg)',
@@ -85,8 +87,8 @@ export function PeopleIcon() {
 
 export function ClarityIcon() {
   return (
-    <div className="relative h-[207px] w-[207px] shrink-0" aria-hidden>
-      <img
+    <div className="relative h-51.75 w-51.75 shrink-0" aria-hidden>
+      <Image
         src="/images/home/clarity/ring.svg"
         alt=""
         width={207.167}
@@ -99,7 +101,7 @@ export function ClarityIcon() {
 
 export function ConfidenceIcon() {
   return (
-    <img
+    <Image
       src="/images/home/icon-confidence.svg"
       alt=""
       width={207.167}
@@ -112,7 +114,7 @@ export function ConfidenceIcon() {
 
 export function GrowthIcon() {
   return (
-    <img
+    <Image
       src="/images/home/icon-growth.svg"
       alt=""
       width={207.167}

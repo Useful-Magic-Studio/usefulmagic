@@ -52,12 +52,12 @@ export function Footer() {
 
   return (
     <footer className="bg-[#e9e9e6]">
-      <div className="mx-auto w-full max-w-[1224px] px-6 pt-10">
+      <div className="mx-auto w-full max-w-306 px-6 pt-10">
         <ul className="grid list-none grid-cols-1 gap-10 sm:grid-cols-2 xl:grid-cols-4">
           {closing.map((item) => (
-            <li key={item.title} className="mx-auto flex max-w-[216px] flex-col items-center text-center">
+            <li key={item.title} className="mx-auto flex max-w-54 flex-col items-center text-center">
               {item.icon}
-              <p className={`mt-2 font-(family-name:--font-nunito-sans) text-[36px] leading-[50px] font-bold ${item.titleClassName}`}>
+              <p className={`mt-2 font-(family-name:--font-nunito-sans) text-[36px] leading-12.5 font-bold ${item.titleClassName}`}>
                 {item.title}
               </p>
               <p className="font-(family-name:--font-abeezee) text-[20px] leading-normal text-[#2f4f4f]">
@@ -69,7 +69,7 @@ export function Footer() {
       </div>
 
       <div className="mt-10 border-2 border-[#2f4f4f] bg-[#f1ab37]">
-        <div className="mx-auto grid max-w-[1440px] grid-cols-2 sm:grid-cols-3 lg:min-h-[178px] lg:grid-cols-[minmax(0,1fr)_175px_175px_175px]">
+        <div className="mx-auto grid max-w-360 grid-cols-2 sm:grid-cols-3 lg:min-h-44.5 lg:grid-cols-[minmax(0,1fr)_175px_175px_175px]">
           <div className="col-span-2 flex items-center gap-6 px-8 py-4 sm:col-span-1">
             <Image
               src="/images/home/footer-mark.svg"
@@ -83,7 +83,7 @@ export function Footer() {
           </div>
           <Link
             href="/privacy"
-            className="flex items-center justify-center border-l-2 border-[#2f4f4f] px-3 text-center font-(family-name:--font-league-spartan) text-[22px] leading-[28px] text-[#2f4f4f] shadow-[inset_8px_-8px_4px_0px_rgba(255,255,246,0.25)] focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-[#59339d] lg:text-[25px]"
+            className="flex items-center justify-center border-l-2 border-[#2f4f4f] px-3 text-center font-(family-name:--font-league-spartan) text-[22px] leading-7 text-[#2f4f4f] shadow-[inset_8px_-8px_4px_0px_rgba(255,255,246,0.25)] focus-visible:outline-2 focus-visible:-outline-offset-4 focus-visible:outline-[#59339d] lg:text-[25px]"
           >
             Privacy Policy
           </Link>
@@ -93,7 +93,7 @@ export function Footer() {
               trackPrimaryCta('contact_us_footer')
               trackContactConversion()
             }}
-            className="flex items-center justify-center border-l-2 border-[#2f4f4f] bg-[#59339d] px-3 text-center font-(family-name:--font-league-spartan) text-[22px] leading-[28px] text-[#fffff6] shadow-[inset_8px_-8px_4px_0px_rgba(255,255,246,0.25)] focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-[#fffff6] lg:text-[25px]"
+            className="flex items-center justify-center border-l-2 border-[#2f4f4f] bg-[#59339d] px-3 text-center font-(family-name:--font-league-spartan) text-[22px] leading-7 text-[#fffff6] shadow-[inset_8px_-8px_4px_0px_rgba(255,255,246,0.25)] focus-visible:outline-2 focus-visible:-outline-offset-4 focus-visible:outline-[#fffff6] lg:text-[25px]"
           >
             Contact
             <br />
@@ -102,7 +102,7 @@ export function Footer() {
           <button
             type="button"
             onClick={scrollToTop}
-            className="flex items-center justify-center gap-2 border-l-2 border-[#2f4f4f] bg-[#2f4f4f] px-3 text-center font-(family-name:--font-league-spartan) text-[22px] leading-[28px] text-[#fffff6] shadow-[inset_8px_-8px_4px_0px_rgba(255,255,246,0.25)] focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-[#f1ab37] lg:text-[25px]"
+            className="flex items-center justify-center gap-2 border-l-2 border-[#2f4f4f] bg-[#2f4f4f] px-3 text-center font-(family-name:--font-league-spartan) text-[22px] leading-7 text-[#fffff6] shadow-[inset_8px_-8px_4px_0px_rgba(255,255,246,0.25)] focus-visible:outline-2 focus-visible:-outline-offset-4 focus-visible:outline-[#f1ab37] lg:text-[25px]"
           >
             <span>
               Back to

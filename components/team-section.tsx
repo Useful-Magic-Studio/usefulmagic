@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { CtaPill } from '@/components/cta-pill'
 import { trackContactConversion, trackPrimaryCta } from '@/lib/analytics'
 
@@ -25,19 +26,19 @@ function Portrait({
   src: string
 }) {
   return (
-    <div className="flex w-[270px] shrink-0 flex-col items-center text-center">
-      <p className="font-(family-name:--font-nunito-sans) text-[40px] leading-[50px] font-bold text-[#2f4f4f]">
+    <div className="flex w-67.5 shrink-0 flex-col items-center text-center">
+      <p className="font-(family-name:--font-nunito-sans) text-[40px] leading-12.5 font-bold text-[#2f4f4f]">
         {name}
       </p>
       <p className="font-(family-name:--font-nunito-sans) text-[24px] leading-snug font-bold text-[#59339d]">
         {role}
       </p>
-      <img
+      <Image
         src={src}
         alt={`Illustrated portrait of ${name}`}
         width={200}
         height={200}
-        className="mt-2 size-[200px] rounded-full object-cover"
+        className="mt-2 size-50 rounded-full object-cover"
       />
     </div>
   )
@@ -45,7 +46,7 @@ function Portrait({
 
 function Bio({ paragraphs }: { paragraphs: string[] }) {
   return (
-    <div className="max-w-[911px] space-y-4 font-(family-name:--font-abeezee) text-[18px] leading-relaxed text-[#2f4f4f] lg:text-[20px]">
+    <div className="max-w-227.75 space-y-4 font-(family-name:--font-abeezee) text-[18px] leading-relaxed text-[#2f4f4f] lg:text-[20px]">
       {paragraphs.map((paragraph) => (
         <p key={paragraph.slice(0, 24)}>{paragraph}</p>
       ))}
@@ -55,8 +56,8 @@ function Bio({ paragraphs }: { paragraphs: string[] }) {
 
 export function TeamSection() {
   return (
-    <section id="team" className="scroll-mt-[100px] bg-[#e9e9e6] px-6 py-8 lg:px-16">
-      <div className="mx-auto w-full max-w-[1280px]">
+    <section id="team" className="scroll-mt-25 bg-[#e9e9e6] px-6 py-8 lg:px-16">
+      <div className="mx-auto w-full max-w-7xl">
         <div className="text-center">
           <h2 className="font-(family-name:--font-nunito-sans) text-[40px] leading-tight font-bold text-[#59339d] lg:text-[48px]">
             The People Behind the Magic
@@ -71,8 +72,8 @@ export function TeamSection() {
           <Bio paragraphs={sarahBio} />
         </div>
 
-        <div className="relative mx-auto my-12 max-w-[907px] border-y-2 border-[#59339d] px-14 py-6 text-center">
-          <img
+        <div className="relative mx-auto my-12 max-w-226.75 border-y-2 border-[#59339d] px-14 py-6 text-center">
+          <Image
             src="/images/home/sparkle.svg"
             alt=""
             width={39}
@@ -80,7 +81,7 @@ export function TeamSection() {
             className="absolute top-1/2 left-2 -translate-y-1/2"
             aria-hidden
           />
-          <img
+          <Image
             src="/images/home/sparkle.svg"
             alt=""
             width={39}
@@ -99,10 +100,10 @@ export function TeamSection() {
         </div>
 
         <div className="mt-14 flex flex-col items-center text-center">
-          <h3 className="max-w-[560px] font-(family-name:--font-nunito-sans) text-[36px] leading-tight font-bold text-[#2f4f4f] lg:text-[40px]">
+          <h3 className="max-w-140 font-(family-name:--font-nunito-sans) text-[36px] leading-tight font-bold text-[#2f4f4f] lg:text-[40px]">
             Let&apos;s build something your team will love
           </h3>
-          <div className="mt-6 w-full max-w-[624px]">
+          <div className="mt-6 w-full max-w-156">
             <CtaPill
               href="mailto:hello@usefulmagicstudio.com"
               onClick={() => {
