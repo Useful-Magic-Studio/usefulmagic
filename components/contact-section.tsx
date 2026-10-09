@@ -79,7 +79,7 @@ export function ContactSection() {
           </p>
           <div className="mt-6 w-full max-w-[624px]">
             <CtaPill
-              href="mailto:sarah@usefulmagicstudio.com"
+              href="mailto:hello@usefulmagicstudio.com"
               onClick={() => {
                 trackPrimaryCta('work_with_us')
                 trackContactConversion()
