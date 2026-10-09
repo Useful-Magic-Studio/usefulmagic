@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import Image from 'next/image'
 import { Menu, X } from 'lucide-react'
 import { trackPrimaryCta } from '@/lib/analytics'
 
@@ -53,21 +54,21 @@ export function Navigation() {
   return (
     <header className="fixed top-0 right-0 left-0 z-50">
       <nav aria-label="Primary" className="border-2 border-[#1c2f2f] bg-[#f1ab37]">
-        <div className="mx-auto hidden h-[100px] max-w-[1440px] lg:grid lg:grid-cols-[390px_repeat(6,minmax(0,1fr))]">
+        <div className="mx-auto hidden h-25 max-w-360 lg:grid lg:grid-cols-[390px_repeat(6,minmax(0,1fr))]">
           <a
             href="#home"
             onClick={(event) => {
               event.preventDefault()
               handleNavClick('#home')
             }}
-            className="flex items-center px-[22px] focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-[#1c2f2f]"
+            className="flex items-center px-5.5 focus-visible:outline-2 focus-visible:-outline-offset-4 focus-visible:outline-[#1c2f2f]"
           >
-            <img
+            <Image
               src="/images/home/hero-mark.svg"
               alt="Useful Magic"
               width={295}
               height={308}
-              className="h-[88px] w-auto"
+              className="h-22 w-auto"
             />
           </a>
           {navItems.map((item) => {
@@ -81,7 +82,7 @@ export function Navigation() {
                   event.preventDefault()
                   handleNavClick(item.href)
                 }}
-                className="flex items-center justify-center border-l border-black px-2 text-center font-(family-name:--font-league-spartan) text-[28px] leading-[1.05] font-normal text-[#2f4f4f] shadow-[inset_10px_-10px_4px_0px_rgba(255,255,246,0.25)] focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-[#59339d] xl:text-[36px]"
+                className="flex items-center justify-center border-l border-black px-2 text-center font-(family-name:--font-league-spartan) text-[28px] leading-[1.05] font-normal text-[#2f4f4f] shadow-[inset_10px_-10px_4px_0px_rgba(255,255,246,0.25)] focus-visible:outline-2 focus-visible:-outline-offset-4 focus-visible:outline-[#59339d] xl:text-[36px]"
               >
                 {item.label}
               </a>
@@ -95,7 +96,7 @@ export function Navigation() {
               trackPrimaryCta('contact_us_nav')
               handleNavClick('#contact')
             }}
-            className="flex items-center justify-center border-l border-black bg-[#59339d] px-2 text-center font-(family-name:--font-league-spartan) text-[28px] leading-[1.05] font-normal text-[#fffff6] shadow-[inset_10px_-10px_4px_0px_rgba(255,255,246,0.25)] focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-[#fffff6] xl:text-[36px]"
+            className="flex items-center justify-center border-l border-black bg-[#59339d] px-2 text-center font-(family-name:--font-league-spartan) text-[28px] leading-[1.05] font-normal text-[#fffff6] shadow-[inset_10px_-10px_4px_0px_rgba(255,255,246,0.25)] focus-visible:outline-2 focus-visible:-outline-offset-4 focus-visible:outline-[#fffff6] xl:text-[36px]"
           >
             Contact
             <br />
@@ -103,7 +104,7 @@ export function Navigation() {
           </a>
         </div>
 
-        <div className="mx-auto flex h-[72px] max-w-[1440px] items-center justify-between px-4 lg:hidden">
+        <div className="mx-auto flex h-18 max-w-360 items-center justify-between px-4 lg:hidden">
           <a
             href="#home"
             onClick={(event) => {
@@ -112,12 +113,12 @@ export function Navigation() {
             }}
             className="focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1c2f2f]"
           >
-            <img
+            <Image
               src="/images/home/hero-mark.svg"
               alt="Useful Magic"
               width={295}
               height={308}
-              className="h-[64px] w-auto"
+              className="h-16 w-auto"
             />
           </a>
           <button

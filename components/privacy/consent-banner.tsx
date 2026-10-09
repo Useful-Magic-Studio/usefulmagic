@@ -50,7 +50,7 @@ export function ConsentBanner() {
           <button
             type="button"
             onClick={() => void reject()}
-            className="min-h-11 min-w-34 rounded-full border-[3px] border-[#6f42c1] bg-transparent px-6 py-2 font-(family-name:--font-abeezee) text-[18px] text-[#2f4f4f] transition-colors hover:bg-[#6f42c1]/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#6f42c1]"
+            className="min-h-11 min-w-34 rounded-full border-3 border-[#6f42c1] bg-transparent px-6 py-2 font-(family-name:--font-abeezee) text-[18px] text-[#2f4f4f] transition-colors hover:bg-[#6f42c1]/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#6f42c1]"
           >
             Reject
           </button>

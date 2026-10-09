@@ -42,10 +42,10 @@ export function HeroInfo() {
   return (
     <ul className="grid list-none grid-cols-1 gap-10 sm:grid-cols-2 xl:grid-cols-4">
       {pillars.map((pillar) => (
-        <li key={pillar.title} className="mx-auto flex max-w-[216px] flex-col items-center text-center">
+        <li key={pillar.title} className="mx-auto flex max-w-54 flex-col items-center text-center">
           {pillar.icon}
           <p
-            className={`mt-2 font-(family-name:--font-nunito-sans) text-[36px] leading-[50px] font-bold ${pillar.titleClassName}`}
+            className={`mt-2 font-(family-name:--font-nunito-sans) text-[36px] leading-12.5 font-bold ${pillar.titleClassName}`}
           >
             {pillar.title}
           </p>

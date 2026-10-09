@@ -55,16 +55,16 @@ function ServiceBlock({
   wide?: boolean
 }) {
   return (
-    <article className={wide ? 'mx-auto w-full max-w-[733px]' : 'w-full'}>
+    <article className={wide ? 'mx-auto w-full max-w-183.25' : 'w-full'}>
       <div className="rounded-[10px] bg-[#59339d] px-6 py-4">
-        <h3 className="font-(family-name:--font-nunito-sans) text-[32px] leading-[50px] font-bold text-white lg:text-[36px]">
+        <h3 className="font-(family-name:--font-nunito-sans) text-[32px] leading-12.5 font-bold text-white lg:text-[36px]">
           {title}
         </h3>
-        <p className="font-(family-name:--font-nunito-sans) text-[26px] leading-[1.3] font-bold text-white lg:text-[30px] lg:leading-[50px]">
+        <p className="font-(family-name:--font-nunito-sans) text-[26px] leading-[1.3] font-bold text-white lg:text-[30px] lg:leading-12.5">
           {tagline}
         </p>
       </div>
-      <p className="mt-2 px-2 font-(family-name:--font-abeezee) text-[24px] leading-[1.4] text-[#2f4f4f] lg:text-[28px] lg:leading-[50px]">
+      <p className="mt-2 px-2 font-(family-name:--font-abeezee) text-[24px] leading-[1.4] text-[#2f4f4f] lg:text-[28px] lg:leading-12.5">
         {body}
       </p>
     </article>
@@ -73,8 +73,8 @@ function ServiceBlock({
 
 export function ServicesSection() {
   return (
-    <section id="services" className="scroll-mt-[100px] bg-[#e9e9e6] px-6 py-8 lg:px-16">
-      <div className="mx-auto w-full max-w-[1280px]">
+    <section id="services" className="scroll-mt-25 bg-[#e9e9e6] px-6 py-8 lg:px-16">
+      <div className="mx-auto w-full max-w-7xl">
         <SectionHeading
           title="Useful Services"
           subtitle="Practical ways we help your team work better."
@@ -93,11 +93,11 @@ export function ServicesSection() {
           <ServiceBlock {...services[5]} wide />
         </div>
 
-        <div className="mt-12 max-w-[720px]">
+        <div className="mt-12 max-w-180">
           <h3 className="font-(family-name:--font-nunito-sans) text-[36px] leading-tight font-bold text-[#2f4f4f] lg:text-[40px]">
             Not sure where to start?
           </h3>
-          <p className="mt-3 max-w-[640px] font-(family-name:--font-abeezee) text-[24px] leading-snug text-[#2f4f4f] lg:text-[28px]">
+          <p className="mt-3 max-w-160 font-(family-name:--font-abeezee) text-[24px] leading-snug text-[#2f4f4f] lg:text-[28px]">
             Tell us what&apos;s getting in the way. We&apos;ll help you figure out what comes next.
           </p>
           <div className="mt-6">

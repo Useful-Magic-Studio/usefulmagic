@@ -1,15 +1,16 @@
 'use client'
 
+import Image from 'next/image'
 import { CtaPill } from '@/components/cta-pill'
 import { trackContactConversion, trackPrimaryCta } from '@/lib/analytics'
 
 function SideCard({ title, body }: { title: string; body: string }) {
   return (
-    <article className="w-full max-w-[350px] overflow-hidden rounded-[10px] border-2 border-[#2f4f4f]">
-      <h3 className="bg-[#2f4f4f] px-4 py-3 text-center font-(family-name:--font-nunito-sans) text-[32px] leading-[50px] font-bold text-[#e9e9e6] lg:text-[36px]">
+    <article className="w-full max-w-87.5 overflow-hidden rounded-[10px] border-2 border-[#2f4f4f]">
+      <h3 className="bg-[#2f4f4f] px-4 py-3 text-center font-(family-name:--font-nunito-sans) text-[32px] leading-12.5 font-bold text-[#e9e9e6] lg:text-[36px]">
         {title}
       </h3>
-      <p className="bg-[#fffff6] px-6 py-8 text-center font-(family-name:--font-abeezee) text-[24px] leading-normal text-[#2f4f4f] lg:min-h-[250px] lg:text-[28px]">
+      <p className="bg-[#fffff6] px-6 py-8 text-center font-(family-name:--font-abeezee) text-[24px] leading-normal text-[#2f4f4f] lg:min-h-62.5 lg:text-[28px]">
         {body}
       </p>
     </article>
@@ -18,12 +19,12 @@ function SideCard({ title, body }: { title: string; body: string }) {
 
 export function ContactSection() {
   return (
-    <section id="contact" className="scroll-mt-[100px] bg-[#e9e9e6] px-6 py-8 lg:px-16" data-sentry-block>
-      <div className="mx-auto w-full max-w-[1280px] text-center">
+    <section id="contact" className="scroll-mt-25 bg-[#e9e9e6] px-6 py-8 lg:px-16" data-sentry-block>
+      <div className="mx-auto w-full max-w-7xl text-center">
         <h2 className="font-(family-name:--font-nunito-sans) text-[36px] leading-tight font-bold text-[#2f4f4f] lg:text-[48px]">
           Complexity is inevitable. Confusion isn&apos;t.
         </h2>
-        <p className="mx-auto mt-4 max-w-[1100px] font-(family-name:--font-nunito-sans) text-[24px] leading-snug text-[#2f4f4f] lg:text-[32px] lg:leading-[50px]">
+        <p className="mx-auto mt-4 max-w-275 font-(family-name:--font-nunito-sans) text-[24px] leading-snug text-[#2f4f4f] lg:text-[32px] lg:leading-12.5">
           We partner with growing businesses to untangle complexity, create clarity, and build systems that empower people to do their best work.
         </p>
 
@@ -36,23 +37,23 @@ export function ContactSection() {
           </div>
 
           <div className="flex flex-col items-center">
-            <article className="relative w-full max-w-[350px] overflow-hidden rounded-[10px] border-2 border-[#2f4f4f]">
-              <img
+            <article className="relative w-full max-w-87.5 overflow-hidden rounded-[10px] border-2 border-[#2f4f4f]">
+              <Image
                 src="/images/home/partnership-sparkle.png"
                 alt=""
                 width={80}
                 height={80}
-                className="absolute top-2 left-2 size-[64px]"
+                className="absolute top-2 left-2 size-16"
                 aria-hidden
               />
-              <h3 className="bg-[#59339d] px-8 py-4 text-center font-(family-name:--font-nunito-sans) text-[32px] leading-[50px] font-bold text-[#e9e9e6] lg:text-[36px]">
+              <h3 className="bg-[#59339d] px-8 py-4 text-center font-(family-name:--font-nunito-sans) text-[32px] leading-12.5 font-bold text-[#e9e9e6] lg:text-[36px]">
                 Our Partnership
               </h3>
               <p className="bg-[#fffff6] px-6 py-8 text-center font-(family-name:--font-abeezee) text-[24px] leading-normal text-[#2f4f4f] lg:text-[28px]">
                 Together, we turn complexity into clarity through research, design, and systems built around your people.
               </p>
             </article>
-            <img
+            <Image
               src="/images/home/partnership-flask.svg"
               alt=""
               width={154}
@@ -74,10 +75,10 @@ export function ContactSection() {
           <h3 className="font-(family-name:--font-nunito-sans) text-[36px] leading-tight font-bold text-[#2f4f4f] lg:text-[40px]">
             Let&apos;s create clarity together
           </h3>
-          <p className="mt-3 max-w-[720px] font-(family-name:--font-abeezee) text-[22px] leading-snug text-[#2f4f4f] lg:text-[28px]">
+          <p className="mt-3 max-w-180 font-(family-name:--font-abeezee) text-[22px] leading-snug text-[#2f4f4f] lg:text-[28px]">
             Tell us what&apos;s getting in the way. We&apos;d love to learn about your business and help you figure out what comes next.
           </p>
-          <div className="mt-6 w-full max-w-[624px]">
+          <div className="mt-6 w-full max-w-156">
             <CtaPill
               href="mailto:hello@usefulmagicstudio.com"
               onClick={() => {

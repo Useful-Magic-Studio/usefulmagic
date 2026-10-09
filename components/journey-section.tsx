@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { CtaPill } from '@/components/cta-pill'
 import { trackPrimaryCta } from '@/lib/analytics'
 
@@ -89,8 +90,8 @@ const pathSteps: Step[] = [
 
 function JourneyCard({ step }: { step: Step }) {
   return (
-    <article className="flex w-full max-w-[250px] flex-col items-center">
-      <img
+    <article className="flex w-full max-w-62.5 flex-col items-center">
+      <Image
         src={step.icon}
         alt=""
         width={step.iconWidth}
@@ -113,11 +114,11 @@ function JourneyCard({ step }: { step: Step }) {
         </p>
       </div>
       {step.payment ? (
-        <div className="flex min-h-[72px] w-full items-center justify-center bg-[#59339d] px-3 py-3 text-center font-(family-name:--font-nunito-sans) text-[20px] leading-tight font-bold text-white [clip-path:polygon(0_0,100%_0,100%_58%,50%_100%,0_58%)]">
+        <div className="flex min-h-18 w-full items-center justify-center bg-[#59339d] px-3 py-3 text-center font-(family-name:--font-nunito-sans) text-[20px] leading-tight font-bold text-white [clip-path:polygon(0_0,100%_0,100%_58%,50%_100%,0_58%)]">
           {step.payment}
         </div>
       ) : (
-        <div className="h-[72px] w-full border-x-2 border-b-2 border-[#59339d] bg-[#fffff6] [clip-path:polygon(0_0,100%_0,100%_58%,50%_100%,0_58%)]" />
+        <div className="h-18 w-full border-x-2 border-b-2 border-[#59339d] bg-[#fffff6] [clip-path:polygon(0_0,100%_0,100%_58%,50%_100%,0_58%)]" />
       )}
     </article>
   )
@@ -149,7 +150,7 @@ function StepRow({
           <JourneyCard key={step.title} step={step} />
         ))}
       </div>
-      <img
+      <Image
         src={timeline}
         alt=""
         width={timelineWidth}
@@ -163,8 +164,8 @@ function StepRow({
 
 export function JourneySection() {
   return (
-    <section id="how-we-work" className="scroll-mt-[100px] bg-[#e9e9e6] px-6 py-8 lg:px-16">
-      <div className="mx-auto w-full max-w-[1280px]">
+    <section id="how-we-work" className="scroll-mt-25 bg-[#e9e9e6] px-6 py-8 lg:px-16">
+      <div className="mx-auto w-full max-w-7xl">
         <div className="text-center">
           <h2 className="font-(family-name:--font-nunito-sans) text-[40px] leading-tight font-bold text-[#59339d] lg:text-[48px]">
             Useful Magic Journey
@@ -193,7 +194,7 @@ export function JourneySection() {
           />
         </div>
 
-        <div className="mt-12 max-w-[720px]">
+        <div className="mt-12 max-w-180">
           <h3 className="font-(family-name:--font-nunito-sans) text-[36px] leading-tight font-bold text-[#2f4f4f] lg:text-[40px]">
             Let&apos;s help your team work better
           </h3>

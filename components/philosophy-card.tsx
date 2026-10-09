@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 type PhilosophyCardProps = {
   title: string
   tagline: string
@@ -12,22 +14,22 @@ export function PhilosophyCard({
   iconSrc,
 }: PhilosophyCardProps) {
   return (
-    <article className="relative w-full max-w-[340px]">
-      <div className="flex min-h-[90px] items-center gap-3 rounded-t-[18px] bg-[#59339d] px-4 py-3">
-        <img
+    <article className="relative w-full max-w-85">
+      <div className="flex min-h-22.5 items-center gap-3 rounded-t-[18px] bg-[#59339d] px-4 py-3">
+        <Image
           src={iconSrc}
           alt=""
           width={72}
           height={72}
-          className="size-[72px] shrink-0 object-contain"
+          className="size-18 shrink-0 object-contain"
           aria-hidden
         />
-        <h3 className="font-(family-name:--font-nunito-sans) text-[32px] leading-[40px] font-bold text-[#e9e9e6] lg:text-[36px]">
+        <h3 className="font-(family-name:--font-nunito-sans) text-[32px] leading-10 font-bold text-[#e9e9e6] lg:text-[36px]">
           {title}
         </h3>
       </div>
       <div className="relative rounded-b-[18px] bg-[#fffff6] px-6 pt-8 pb-8 text-center">
-        <img
+        <Image
           src="/images/home/sparkle.svg"
           alt=""
           width={43}

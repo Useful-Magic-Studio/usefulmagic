@@ -34,8 +34,8 @@ const cards = [
 
 export function PhilosophySection() {
   return (
-    <section id="values" className="scroll-mt-[100px] bg-[#e9e9e6] px-6 py-8 lg:px-16">
-      <div className="mx-auto w-full max-w-[1280px]">
+    <section id="values" className="scroll-mt-25 bg-[#e9e9e6] px-6 py-8 lg:px-16">
+      <div className="mx-auto w-full max-w-7xl">
         <SectionHeading
           title="Our Design Philosophy"
           subtitle="Helping people thrive through better systems."
