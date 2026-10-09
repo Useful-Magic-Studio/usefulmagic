@@ -32,7 +32,7 @@ const cards = [
   },
 ]
 
-export function AboutSection() {
+export function PhilosophySection() {
   return (
     <section id="values" className="scroll-mt-[100px] bg-[#e9e9e6] px-6 py-8 lg:px-16">
       <div className="mx-auto w-full max-w-[1280px]">

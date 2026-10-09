@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect } from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 import {
   ClarityIcon,
@@ -10,9 +10,9 @@ import {
 } from '@/components/pillar-icons'
 import {
   trackContactConversion,
-  trackNewsletterSignup,
   trackPrimaryCta,
 } from '@/lib/analytics'
+import { NewsletterForm } from '@/components/newsletter-form'
 import { useConsent } from '@/components/privacy/consent-context'
 
 const closing = [
@@ -50,18 +50,6 @@ export function Footer() {
     window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' })
   }
 
-  useEffect(() => {
-    const onSubmit = (event: Event) => {
-      const target = event.target
-      if (!(target instanceof HTMLFormElement)) return
-      if (!target.hasAttribute('data-sv-form')) return
-      trackNewsletterSignup()
-    }
-
-    document.addEventListener('submit', onSubmit, true)
-    return () => document.removeEventListener('submit', onSubmit, true)
-  }, [])
-
   return (
     <footer className="bg-[#e9e9e6]">
       <div className="mx-auto w-full max-w-[1224px] px-6 pt-10">
@@ -83,7 +71,7 @@ export function Footer() {
       <div className="mt-10 border-2 border-[#2f4f4f] bg-[#f1ab37]">
         <div className="mx-auto grid max-w-[1440px] grid-cols-2 sm:grid-cols-3 lg:min-h-[178px] lg:grid-cols-[minmax(0,1fr)_175px_175px_175px]">
           <div className="col-span-2 flex items-center gap-6 px-8 py-4 sm:col-span-1">
-            <img
+            <Image
               src="/images/home/footer-mark.svg"
               alt="Useful Magic Studio"
               width={149}
@@ -121,7 +109,7 @@ export function Footer() {
               <br />
               Top
             </span>
-            <img
+            <Image
               src="/images/home/footer-arrow.svg"
               alt=""
               width={50}
@@ -143,7 +131,7 @@ export function Footer() {
         </button>
       </div>
 
-      <script async data-uid="7e1bfa35a1" src="https://usefulmagicstudio.kit.com/7e1bfa35a1/index.js"></script>
+      <NewsletterForm />
     </footer>
   )
 }
