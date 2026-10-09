@@ -104,7 +104,7 @@ export function TeamSection() {
           </h3>
           <div className="mt-6 w-full max-w-[624px]">
             <CtaPill
-              href="mailto:sarah@usefulmagicstudio.com"
+              href="mailto:hello@usefulmagicstudio.com"
               onClick={() => {
                 trackPrimaryCta('get_in_touch')
                 trackContactConversion()

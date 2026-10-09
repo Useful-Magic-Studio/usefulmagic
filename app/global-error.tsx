@@ -29,12 +29,12 @@ export default function GlobalError({
   }, [error])
 
   const supportHref = eventId
-    ? `mailto:sarah@usefulmagicstudio.com?subject=${encodeURIComponent(
+    ? `mailto:hello@usefulmagicstudio.com?subject=${encodeURIComponent(
         `Site error report (${eventId})`,
       )}&body=${encodeURIComponent(
         `Hi Useful Magic,\n\nI hit an error on the website.\n\nSentry event ID: ${eventId}\n\nWhat I was doing:\n`,
       )}`
-    : 'mailto:sarah@usefulmagicstudio.com'
+    : 'mailto:hello@usefulmagicstudio.com'
 
   return (
     <html lang="en">

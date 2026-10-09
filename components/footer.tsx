@@ -88,7 +88,7 @@ export function Footer() {
             Privacy Policy
           </Link>
           <a
-            href="mailto:sarah@usefulmagicstudio.com"
+            href="mailto:hello@usefulmagicstudio.com"
             onClick={() => {
               trackPrimaryCta('contact_us_footer')
               trackContactConversion()

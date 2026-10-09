@@ -50,10 +50,10 @@ export default function PrivacyPage() {
               Useful Magic Studio (“we”, “us”) operates this marketing website.
               Privacy questions:{' '}
               <a
-                href="mailto:sarah@usefulmagicstudio.com"
+                href="mailto:hello@usefulmagicstudio.com"
                 className="text-[#6f42c1] underline underline-offset-2"
               >
-                sarah@usefulmagicstudio.com
+                hello@usefulmagicstudio.com
               </a>
               .
             </p>
