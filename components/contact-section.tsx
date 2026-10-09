@@ -1,93 +1,92 @@
 'use client'
 
+import { CtaPill } from '@/components/cta-pill'
 import { trackContactConversion, trackPrimaryCta } from '@/lib/analytics'
+
+function SideCard({ title, body }: { title: string; body: string }) {
+  return (
+    <article className="w-full max-w-[350px] overflow-hidden rounded-[10px] border-2 border-[#2f4f4f]">
+      <h3 className="bg-[#2f4f4f] px-4 py-3 text-center font-(family-name:--font-nunito-sans) text-[32px] leading-[50px] font-bold text-[#e9e9e6] lg:text-[36px]">
+        {title}
+      </h3>
+      <p className="bg-[#fffff6] px-6 py-8 text-center font-(family-name:--font-abeezee) text-[24px] leading-normal text-[#2f4f4f] lg:min-h-[250px] lg:text-[28px]">
+        {body}
+      </p>
+    </article>
+  )
+}
 
 export function ContactSection() {
   return (
-    <section id="contact" className="bg-[#e9e9e6]" data-sentry-block>
-      {/* Ready to work? */}
-      <div className="py-24 px-6 text-center">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="font-(family-name:--font-nunito-sans) font-bold text-[40px] leading-[50px] text-[#2f4f4f] mb-6">
-            Ready to work?
-          </h2>
-          <p className="font-(family-name:--font-nunito-sans) font-normal text-[24px] leading-[30px] text-[#2f4f4f] max-w-xl mx-auto mb-10">
-            Arabica Acerbic Affogato Aftertaste Aged Americano And Aroma, cream
-            As in half mountain con crema medium, At variety organic java lungo
-            carajillo.
-          </p>
-          <a
-            href="mailto:sarah@usefulmagicstudio.com"
-            onClick={() => {
-              trackPrimaryCta('get_in_touch')
-              trackContactConversion()
-            }}
-            className="inline-block bg-[#f1ab37] border-[3px] border-[#6f42c1] text-[#2f4f4f] font-(family-name:--font-abeezee) text-[24px] px-10 py-3 rounded-full shadow-[4px_4px_2px_rgba(0,0,0,0.25)] hover:brightness-95 transition-all"
-          >
-            Get in Touch
-          </a>
-        </div>
-      </div>
+    <section id="contact" className="scroll-mt-[100px] bg-[#e9e9e6] px-6 py-8 lg:px-16" data-sentry-block>
+      <div className="mx-auto w-full max-w-[1280px] text-center">
+        <h2 className="font-(family-name:--font-nunito-sans) text-[36px] leading-tight font-bold text-[#2f4f4f] lg:text-[48px]">
+          Complexity is inevitable. Confusion isn&apos;t.
+        </h2>
+        <p className="mx-auto mt-4 max-w-[1100px] font-(family-name:--font-nunito-sans) text-[24px] leading-snug text-[#2f4f4f] lg:text-[32px] lg:leading-[50px]">
+          We partner with growing businesses to untangle complexity, create clarity, and build systems that empower people to do their best work.
+        </p>
 
-      {/* Divider */}
-      <div className="border-t-[3px] border-[#6f42c1] mx-6" />
-
-      {/* Two-column CTAs */}
-      <div className="py-24 px-6">
-        <div className="mx-auto grid max-w-7xl gap-16 md:grid-cols-2">
-          {/* Want to Know More? */}
-          <div className="flex flex-col items-center text-center">
-            <h3
-              data-node-id="22:151"
-              className="mb-6 [text-underline-position:from-font] [word-break:break-word] font-(family-name:--font-nunito-sans) text-[40px] font-bold leading-[50px] text-[#2f4f4f] underline decoration-from-font decoration-solid"
-            >
-              Want to Know More?
-            </h3>
-            <p
-              data-node-id="22:153"
-              className="mb-8 max-w-lg [word-break:break-word] font-(family-name:--font-nunito-sans) text-[24px] font-normal leading-[30px] text-[#2f4f4f]"
-            >
-              Arabica Acerbic Affogato Aftertaste Aged Americano And Aroma,
-              cream As in half mountain con crema medium, At variety organic
-              java lungo carajillo.
-            </p>
-            <a
-              href="#about"
-              data-node-id="22:155"
-              onClick={() => trackPrimaryCta('learn_more')}
-              className="inline-flex items-center justify-center rounded-[50px] border border-solid border-[#f2f2da] bg-[#6f42c1] px-[14px] pb-[9px] pt-[10px] font-(family-name:--font-abeezee) text-[24px] whitespace-nowrap text-white shadow-[0px_4px_2px_rgba(0,0,0,0.25),4px_4px_2px_rgba(0,0,0,0.25)] transition-all hover:bg-[#5a35a0]"
-            >
-              Learn More
-            </a>
+        <div className="mt-12 grid items-end gap-8 lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] lg:gap-6">
+          <div className="flex justify-center lg:justify-end">
+            <SideCard
+              title="Your Challenge"
+              body="Growth brings complexity. Workflows get harder to manage, and once-useful systems start getting in the way."
+            />
           </div>
 
-          {/* Lets Get To Work! */}
-          <div className="flex flex-col items-center text-center">
-            <h3
-              data-node-id="22:158"
-              className="mb-6 [text-underline-position:from-font] [word-break:break-word] font-(family-name:--font-nunito-sans) text-[40px] font-bold leading-[50px] text-[#2f4f4f] underline decoration-from-font decoration-solid"
-            >
-              Lets Get To Work!
-            </h3>
-            <p
-              data-node-id="22:160"
-              className="mb-8 max-w-lg [word-break:break-word] font-(family-name:--font-nunito-sans) text-[24px] font-normal leading-[30px] text-[#2f4f4f]"
-            >
-              Arabica Acerbic Affogato Aftertaste Aged Americano And Aroma,
-              cream As in half mountain con crema medium, At variety organic
-              java lungo carajillo.
-            </p>
-            <a
+          <div className="flex flex-col items-center">
+            <article className="relative w-full max-w-[350px] overflow-hidden rounded-[10px] border-2 border-[#2f4f4f]">
+              <img
+                src="/images/home/partnership-sparkle.png"
+                alt=""
+                width={80}
+                height={80}
+                className="absolute top-2 left-2 size-[64px]"
+                aria-hidden
+              />
+              <h3 className="bg-[#59339d] px-8 py-4 text-center font-(family-name:--font-nunito-sans) text-[32px] leading-[50px] font-bold text-[#e9e9e6] lg:text-[36px]">
+                Our Partnership
+              </h3>
+              <p className="bg-[#fffff6] px-6 py-8 text-center font-(family-name:--font-abeezee) text-[24px] leading-normal text-[#2f4f4f] lg:text-[28px]">
+                Together, we turn complexity into clarity through research, design, and systems built around your people.
+              </p>
+            </article>
+            <img
+              src="/images/home/partnership-flask.svg"
+              alt=""
+              width={154}
+              height={305}
+              className="-mt-6"
+              aria-hidden
+            />
+          </div>
+
+          <div className="flex justify-center lg:justify-start">
+            <SideCard
+              title="Your Growth"
+              body="Clearer systems help your team work with confidence and focus on what matters most."
+            />
+          </div>
+        </div>
+
+        <div className="mt-10 flex flex-col items-center">
+          <h3 className="font-(family-name:--font-nunito-sans) text-[36px] leading-tight font-bold text-[#2f4f4f] lg:text-[40px]">
+            Let&apos;s create clarity together
+          </h3>
+          <p className="mt-3 max-w-[720px] font-(family-name:--font-abeezee) text-[22px] leading-snug text-[#2f4f4f] lg:text-[28px]">
+            Tell us what&apos;s getting in the way. We&apos;d love to learn about your business and help you figure out what comes next.
+          </p>
+          <div className="mt-6 w-full max-w-[624px]">
+            <CtaPill
               href="mailto:sarah@usefulmagicstudio.com"
-              data-node-id="22:162"
               onClick={() => {
-                trackPrimaryCta('contact_us')
+                trackPrimaryCta('work_with_us')
                 trackContactConversion()
               }}
-              className="inline-flex items-center justify-center rounded-[50px] border-[3px] border-solid border-[#6f42c1] bg-[#f1ab37] pb-[4px] pl-[30px] pr-[29px] pt-[5px] font-(family-name:--font-abeezee) text-[24px] whitespace-nowrap text-[#2f4f4f] shadow-[4px_4px_2px_rgba(0,0,0,0.25)] transition-all hover:brightness-95"
             >
-              Contact Us
-            </a>
+              Work With Us
+            </CtaPill>
           </div>
         </div>
       </div>

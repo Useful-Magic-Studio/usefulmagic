@@ -9,7 +9,7 @@ test.describe('pages with rejected consent', () => {
   test('homepage renders the hero', async ({ page }) => {
     await openPage(page, '/')
     await expect(
-      page.getByRole('heading', { level: 1, name: 'Boutique UX and Engineering Consultancy' }),
+      page.getByRole('heading', { level: 1, name: 'Helping Growing Businesses Work Better' }),
     ).toBeVisible()
     await expect(page.getByRole('dialog', { name: 'Privacy choices' })).toHaveCount(0)
   })

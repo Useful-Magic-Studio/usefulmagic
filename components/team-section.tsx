@@ -1,68 +1,117 @@
-const team = [
-  {
-    name: 'Sarah',
-    role: 'Lead Engineer',
-    bio: 'Sarah brings deep technical expertise in system analysis and architecture. She dissects complex workflows to find elegant, scalable solutions that just work.',
-  },
-  {
-    name: 'Fey',
-    role: 'Lead UX Researcher',
-    bio: 'Fey bridges the gap between business needs and user experience. With an eye for design and a mind for strategy, she ensures every solution is both beautiful and practical.',
-  },
+'use client'
+
+import { CtaPill } from '@/components/cta-pill'
+import { trackContactConversion, trackPrimaryCta } from '@/lib/analytics'
+
+const sarahBio = [
+  'Sarah is a strategist, engineer, and systems thinker who helps organizations turn messy workflows into practical, human-centered systems.',
+  'She brings experience across product strategy, software development, operations, and AI-enabled systems, with a particular talent for seeing how people, processes, and technology fit together. Her work is grounded in a simple belief: the best technology should reduce friction, preserve human judgment, and make good work easier to do.',
+  'As co-founder of Useful Magic, Sarah helps clients identify what is slowing them down, design better ways of working, and build solutions that fit their real needs. She is tool-agnostic, deeply curious, and less interested in chasing the latest software trend than in creating systems that are useful, sustainable, and built to evolve.',
 ]
 
-function TeamMemberCard({
+const feyBio = [
+  'Fey is a UX researcher, designer, and systems thinker who believes every great solution begins with understanding people. She helps organizations untangle complexity by uncovering how teams work and identifying hidden opportunities for improvement.',
+  'Her background in interactive theater and community leadership shaped a deeply collaborative approach to research, grounded in empathy, curiosity, and listening first. Through research, systems thinking, and human-centered design, she creates intuitive experiences that help people do their best work.',
+  "As co-founder of Useful Magic Studio, Fey partners with clients to uncover what teams truly need before designing systems that feel natural from the very beginning. Whether she's conducting research, facilitating workshops, or exploring thoughtful uses of AI, her goal is always the same: create clarity that empowers people, builds confidence, and helps organizations grow.",
+]
+
+function Portrait({
   name,
   role,
-  bio,
+  src,
 }: {
   name: string
   role: string
-  bio: string
+  src: string
 }) {
   return (
-    <div className="flex flex-col items-center gap-4 max-w-[270px]">
-      <h3 className="font-(family-name:--font-nunito-sans) font-bold text-[40px] leading-[50px] text-[#2f4f4f] text-center w-full">
+    <div className="flex w-[270px] shrink-0 flex-col items-center text-center">
+      <p className="font-(family-name:--font-nunito-sans) text-[40px] leading-[50px] font-bold text-[#2f4f4f]">
         {name}
-      </h3>
-      <p className="font-(family-name:--font-nunito-sans) font-bold text-[24px] leading-[50px] text-[#2f4f4f] text-center">
+      </p>
+      <p className="font-(family-name:--font-nunito-sans) text-[24px] leading-snug font-bold text-[#59339d]">
         {role}
       </p>
-      {/* Avatar circle */}
-      <div className="w-[200px] h-[200px] rounded-full bg-[#d4c4e3] border-2 border-[#6f42c1] flex items-center justify-center overflow-hidden">
-        <span className="font-(family-name:--font-nunito-sans) font-bold text-[48px] text-[#6f42c1]">
-          {name[0]}
-        </span>
-      </div>
-      <p className="font-(family-name:--font-abeezee) text-[18px] leading-relaxed text-[#2f4f4f] text-center mt-2">
-        {bio}
-      </p>
+      <img
+        src={src}
+        alt={`Illustrated portrait of ${name}`}
+        width={200}
+        height={200}
+        className="mt-2 size-[200px] rounded-full object-cover"
+      />
+    </div>
+  )
+}
+
+function Bio({ paragraphs }: { paragraphs: string[] }) {
+  return (
+    <div className="max-w-[911px] space-y-4 font-(family-name:--font-abeezee) text-[18px] leading-relaxed text-[#2f4f4f] lg:text-[20px]">
+      {paragraphs.map((paragraph) => (
+        <p key={paragraph.slice(0, 24)}>{paragraph}</p>
+      ))}
     </div>
   )
 }
 
 export function TeamSection() {
   return (
-    <section id="team" className="py-24 px-6 bg-[#e9e9e6]">
-      <div className="max-w-7xl mx-auto">
-        {/* Section header */}
-        <div className="flex items-center justify-center gap-4 mb-16">
-          <div className="w-[100px] h-[100px] rounded-[18px] bg-[#f1ab37] border border-[#2f4f4f] shrink-0" />
-          <h2 className="font-(family-name:--font-nunito-sans) font-bold text-[48px] leading-[90px] text-[#6f42c1]">
-            Meet Our Team
+    <section id="team" className="scroll-mt-[100px] bg-[#e9e9e6] px-6 py-8 lg:px-16">
+      <div className="mx-auto w-full max-w-[1280px]">
+        <div className="text-center">
+          <h2 className="font-(family-name:--font-nunito-sans) text-[40px] leading-tight font-bold text-[#59339d] lg:text-[48px]">
+            The People Behind the Magic
           </h2>
+          <p className="mt-2 font-(family-name:--font-nunito-sans) text-[28px] leading-tight font-bold text-[#2f4f4f] lg:text-[36px]">
+            Meet the people who turn complexity into clarity.
+          </p>
         </div>
 
-        {/* Divider */}
-        <div className="border-t-[3px] border-[#6f42c1] mb-16 w-full" />
+        <div className="mt-12 flex flex-col items-center gap-8 lg:flex-row lg:items-start lg:gap-10">
+          <Portrait name="Sarah" role="Lead Engineer" src="/images/team/sarah.png" />
+          <Bio paragraphs={sarahBio} />
+        </div>
 
-        {/* Team members — staggered */}
-        <div className="flex flex-col md:flex-row items-start justify-around gap-16">
-          <div className="md:mt-0">
-            <TeamMemberCard {...team[0]} />
-          </div>
-          <div className="md:mt-24">
-            <TeamMemberCard {...team[1]} />
+        <div className="relative mx-auto my-12 max-w-[907px] border-y-2 border-[#59339d] px-14 py-6 text-center">
+          <img
+            src="/images/home/sparkle.svg"
+            alt=""
+            width={39}
+            height={39}
+            className="absolute top-1/2 left-2 -translate-y-1/2"
+            aria-hidden
+          />
+          <img
+            src="/images/home/sparkle.svg"
+            alt=""
+            width={39}
+            height={39}
+            className="absolute top-1/2 right-2 -translate-y-1/2"
+            aria-hidden
+          />
+          <p className="font-(family-name:--font-nunito-sans) text-[28px] leading-snug font-bold text-[#2f4f4f] lg:text-[32px]">
+            Together, we combine research, design, and engineering to create better systems
+          </p>
+        </div>
+
+        <div className="flex flex-col-reverse items-center gap-8 lg:flex-row lg:items-start lg:gap-10">
+          <Bio paragraphs={feyBio} />
+          <Portrait name="Fey" role="Lead UX Researcher" src="/images/team/fey.png" />
+        </div>
+
+        <div className="mt-14 flex flex-col items-center text-center">
+          <h3 className="max-w-[560px] font-(family-name:--font-nunito-sans) text-[36px] leading-tight font-bold text-[#2f4f4f] lg:text-[40px]">
+            Let&apos;s build something your team will love
+          </h3>
+          <div className="mt-6 w-full max-w-[624px]">
+            <CtaPill
+              href="mailto:sarah@usefulmagicstudio.com"
+              onClick={() => {
+                trackPrimaryCta('get_in_touch')
+                trackContactConversion()
+              }}
+            >
+              Get in Touch
+            </CtaPill>
           </div>
         </div>
       </div>
